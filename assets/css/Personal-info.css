@@ -1,0 +1,130 @@
+/* GLOBAL */
+body {
+  margin: 0;
+}
+@font-face {
+  font-family: "Rowdies";
+  src: url(../fonts/Rowdies-Regular.ttf);
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url(../fonts/Montserrat-VariableFont_wght.ttf);
+}
+h1 {
+  font-family: "Rowdies";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 45px;
+  line-height: 60px;
+  color: #fe3b1f;
+  margin: 50px 110px 0 110px;
+}
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+.left-half {
+  left: 0;
+}
+.right-half {
+  right: 0;
+  background-color: #454545;
+  background: radial-gradient(50% 50% at 50% 50%, #0c0d0e 0%, #151718 73.44%);
+}
+
+.info {
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 200%;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  margin: 50px 110px 0 110px;
+}
+.personal-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* BG input */
+.info-input {
+  margin-top: 30px;
+  width: 400px;
+  height: 30px;
+  background: #ffffff;
+  border: 1px solid #525557;
+}
+.info-input::placeholder .insights::placeholder {
+  margin: 5px;
+  padding-left: 20px;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 100px 220px 80px 220px;
+}
+.pagination a {
+  width: 50px;
+}
+
+/* Button */
+
+.addLanguageBtn-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+.addLanguageBtn {
+  margin: 15px 132px 15px 15px;
+  background-color: #fe3b1f;
+  color: wheat;
+}
+
+/* Covid-stuff Radio button forms & date button forms*/
+
+.info-wrapper {
+  margin: 40px 220px 0 0;
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-size: 17px;
+}
+.radio-btn {
+  margin-bottom: 15px;
+}
+.radio-btn label {
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.radio-btn input,
+.dates-input input {
+  margin: 10px;
+}
+.dates-input input {
+  width: 400px;
+  height: 45px;
+  background: #ffffff;
+  border: 1px solid #525557;
+}
+
+/* insights */
+.insights-wrapper {
+  margin-left: 50px;
+}
+.insights input {
+  border: 1px solid #525557;
+}
+.insights-text-inputs input {
+  width: 380px;
+}
+.devtalk input {
+  height: 90px;
+  margin-bottom: 10px;
+}
+.specials input {
+  height: 50px;
+}

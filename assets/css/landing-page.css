@@ -1,0 +1,79 @@
+/* Stars & Global stuff */
+body {
+  margin: 0;
+}
+html {
+  background: url(../images/stars.png);
+  background-color: black;
+}
+@font-face {
+  font-family: "Rowdies";
+  src: url(../fonts/Rowdies-Regular.ttf);
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url(../fonts/Montserrat-VariableFont_wght.ttf);
+}
+
+/*Welcome Rocketeer */
+
+.greetings {
+  text-align: center;
+  align-items: center;
+  margin: 105px 415px 0 415px;
+  font-family: "Rowdies";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 66px;
+  color: #fe3b1f;
+  height: 100px;
+}
+
+/*start questionnaire */
+
+.btn-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-wrapper button {
+  width: 250px;
+  height: 50px;
+  border-radius: 50px;
+  margin-top: 55px;
+  background-color: #fe3b1f;
+  font-family: "Montserrat";
+  font-size: 15px;
+  line-height: 20px;
+  color: #ffffff;
+}
+/* final submit button */
+.submission {
+  margin-top: 200px;
+}
+
+/*Submitted Questionnaire */
+.submitted-applications {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 0;
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-size: 15px;
+  text-decoration-line: underline;
+  line-height: 20px;
+  color: #ffffff;
+}
+
+/* RocketMan */
+.image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+img {
+  width: 409px;
+  height: 370px;
+}
