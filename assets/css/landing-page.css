@@ -47,6 +47,13 @@ html {
   line-height: 20px;
   color: #ffffff;
 }
+.btn-wrapper button:hover {
+  background-color: red;
+}
+.btn-wrapper button:active {
+  box-shadow: 0 2px #750000;
+  transform: translateY(4px);
+}
 /* final submit button */
 .submission {
   margin-top: 200px;

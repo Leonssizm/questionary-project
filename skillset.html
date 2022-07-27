@@ -27,24 +27,25 @@
                 </select>
                 <br>
                 <input type="text" name="Experience" placeholder="Experience duration in years" class="info-input">
-            </form>
-            <div class="addLanguageBtn-wrapper">
-                <button type="button" class="addLanguageBtn" id="addLanguageBtn">Add Programming Language</button>
-            </div>
-            <!--Skills go here-->
-            <div>
+                <div class="addLanguageBtn-wrapper">
+                    <button type="button" class="addLanguageBtn" id="addLanguageBtn">Add Programming Language</button>
+                </div>
+                <!--Skills go here-->
+                <div>
+                    <template>
 
-            </div>
-            <!-- Pagination -->
-            <div class="pagination">
-                <a href="#">&olt;</a>
-                <a href="./coordinates.html">1</a>
-                <a href="./skillset.html">2</a>
-                <a href="./covid.html">3</a>
-                <a href="./insights.html">4</a>
-                <a href="">5</a>
-                <a href="#">&ogt;</a>
-            </div>
+                    </template>
+                </div>
+                <div class="pagination">
+                    <a onclick="skillsetToCoordinates()" href="#">&olt;</a>
+                    <a href="./coordinates.html">&#9711;</a>
+                    <a href="./skillset.html">&#9711;</a>
+                    <a href="./covid.html">&#9711;</a>
+                    <a href="./insights.html">&#9711;</a>
+                    <a href="./submit.html">&#9711;</a>
+                    <a id="next-page" onclick="skillsetToCovid()" href="#">&ogt;</a>
+                </div>
+            </form>
         </div>
     </div>
     <div class="split right-half">

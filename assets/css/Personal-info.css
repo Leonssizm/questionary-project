@@ -55,6 +55,7 @@ h1 {
 /* BG input */
 .info-input {
   margin-top: 30px;
+  border-top: 10px;
   width: 400px;
   height: 30px;
   background: #ffffff;
@@ -64,6 +65,20 @@ h1 {
   margin: 5px;
   padding-left: 20px;
 }
+.input-control input:focus {
+  outline: 0;
+}
+.input-control.success input {
+  border-color: #09c352;
+}
+.input-control.error input {
+  border-color: #ff3860;
+}
+.input-control.error {
+  color: #ff3860;
+  font-size: 15px;
+  height: 80px;
+}
 .pagination {
   display: flex;
   justify-content: center;
@@ -71,8 +86,14 @@ h1 {
 }
 .pagination a {
   width: 50px;
+  list-style: none;
+  text-decoration: none;
+  color: #750000;
 }
-
+.pagination a:active {
+  box-shadow: 0 2px #750000;
+  transform: translateY(4px);
+}
 /* Button */
 
 .addLanguageBtn-wrapper {
@@ -83,6 +104,18 @@ h1 {
   margin: 15px 132px 15px 15px;
   background-color: #fe3b1f;
   color: wheat;
+}
+
+.submitBtn {
+  color: red;
+  border-color: transparent;
+  border: 0;
+  padding: 0;
+  font-size: 17px;
+  font-weight: 400;
+}
+.submitBtn:active {
+  transform: translateY(2px);
 }
 
 /* Covid-stuff Radio button forms & date button forms*/

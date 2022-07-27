@@ -19,53 +19,47 @@
         <div>
             <form class="personal-info">
                 <div class="info-wrapper">
-                    <div class="radio-btn">
-                        <label>how would you prefer to work</label>
-                        <br>
-                        <input type="radio" name="location">From sairme Office</input>
-                        <br>
-                        <input type="radio" name="location">From Home</input>
-                        <br>
+                    <div class="radio-btn input-control">
+                        <label>how would you prefer to work</label><br>
+                        <input type="radio" name="location">From sairme Office</input><br>
+                        <input type="radio" name="location">From Home</input><br>
                         <input type="radio" name="location">Hybrid</input>
-
+                        <div class="error"></div>
                     </div>
-                    <div class="radio-btn">
-                        <label>did you contact covid 19? :(</label>
-                        <br>
-                        <input type="radio" name="covid-contact">Yes</input>
-                        <br>
+                    <div class="radio-btn input-control">
+                        <label>did you contact covid 19? :(</label><br>
+                        <input type="radio" name="covid-contact">Yes</input><br>
                         <input type="radio" name="covid-contact">No</input>
+                        <div class="error"></div>
                     </div>
-                    <div class="dates-input">
-                        <label>When?</label>
-                        <br>
+                    <div class="dates-input input-control">
+                        <label>When?</label><br>
                         <input type="date" name="covid-contact-date">
+                        <div class="error"></div>
                     </div>
-                    <div class="radio-btn">
-                        <label>Have you been Vaccined?</label>
-                        <br>
-                        <input type="radio" name="covid-contact">Yes</input>
-                        <br>
+                    <div class="radio-btn input-control">
+                        <label>Have you been Vaccined?</label><br>
+                        <input type="radio" name="covid-contact">Yes</input><br>
                         <input type="radio" name="covid-contact">No</input>
+                        <div class="error"></div>
                     </div>
-                    <div class="dates-input">
-                        <label>When did you get your last covid Vaccine?</label>
-                        <br>
+                    <div class="dates-input input-control">
+                        <label>When did you get your last covid Vaccine?</label><br>
                         <input type="date" name="covid-contact-date">
+                        <div class="error"></div>
                     </div>
-
+                </div>
+                <!-- Pagination -->
+                <div class="pagination">
+                    <a onclick="covidToSkillset()" href="#">&olt;</a>
+                    <a href="./coordinates.html">&#9711;</a>
+                    <a href="./skillset.html">&#9711;</a>
+                    <a href="./covid.html">&#9711;</a>
+                    <a href="./insights.html">&#9711;</a>
+                    <a href="./submit.html">&#9711;</a>
+                    <a id="next-page" onclick="covidToInsights()" href="#">&ogt;</a>
                 </div>
             </form>
-            <!-- Pagination -->
-            <div class="pagination">
-                <a href="#">&olt;</a>
-                <a href="./coordinates.html">1</a>
-                <a href="./skillset.html">2</a>
-                <a href="./covid.html">3</a>
-                <a href="./insights.html">4</a>
-                <a href="">5</a>
-                <a href="#">&ogt;</a>
-            </div>
         </div>
     </div>
     <div class="split right-half">
