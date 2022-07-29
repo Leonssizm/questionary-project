@@ -95,18 +95,18 @@ h1 {
   transform: translateY(4px);
 }
 /* Button */
-
-.addLanguageBtn-wrapper {
-  display: flex;
-  justify-content: flex-end;
-}
 .addLanguageBtn {
-  margin: 15px 132px 15px 15px;
+  margin: 15px 25px 15px 250px;
+  height: 31px;
   background-color: #fe3b1f;
+  border: 1px transparent;
   color: wheat;
 }
-
-.submitBtn {
+.addLanguageBtn:active {
+  box-shadow: 0 2px #750000;
+  transform: translateY(4px);
+}
+.removeSkillBtn {
   color: red;
   border-color: transparent;
   border: 0;
@@ -114,7 +114,7 @@ h1 {
   font-size: 17px;
   font-weight: 400;
 }
-.submitBtn:active {
+.removeSkillBtn:active {
   transform: translateY(2px);
 }
 
@@ -160,4 +160,13 @@ h1 {
 }
 .specials input {
   height: 50px;
+}
+
+/* Template */
+
+.template-input {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }

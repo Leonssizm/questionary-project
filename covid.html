@@ -10,6 +10,7 @@
     <meta name="author" content="Levan Kereselidze">
     <link rel="stylesheet" href="./assets/css/Personal-info.css">
     <script src="./assets/script/scripts.js" defer></script>
+    <script src="./assets/script/covid.js" defer></script>
     <title>Covid</title>
 </head>
 
@@ -17,13 +18,13 @@
     <div class="split left-Half">
         <h1>Covid stuff</h1>
         <div>
-            <form class="personal-info">
+            <form class="personal-info" name="covidForm">
                 <div class="info-wrapper">
                     <div class="radio-btn input-control">
                         <label>how would you prefer to work</label><br>
-                        <input type="radio" name="location">From sairme Office</input><br>
-                        <input type="radio" name="location">From Home</input><br>
-                        <input type="radio" name="location">Hybrid</input>
+                        <input type="radio" name="location" value="fromOffice">From sairme Office</input><br>
+                        <input type="radio" name="location" value="fromHome">From Home</input><br>
+                        <input type="radio" name="location" value="hybrid">Hybrid</input>
                         <div class="error"></div>
                     </div>
                     <div class="radio-btn input-control">
@@ -51,13 +52,13 @@
                 </div>
                 <!-- Pagination -->
                 <div class="pagination">
-                    <a onclick="covidToSkillset()" href="#">&olt;</a>
+                    <a href="#">&olt;</a>
                     <a href="./coordinates.html">&#9711;</a>
                     <a href="./skillset.html">&#9711;</a>
                     <a href="./covid.html">&#9711;</a>
                     <a href="./insights.html">&#9711;</a>
                     <a href="./submit.html">&#9711;</a>
-                    <a id="next-page" onclick="covidToInsights()" href="#">&ogt;</a>
+                    <button type="submit" class="submitBtn">&ogt;</button>
                 </div>
             </form>
         </div>

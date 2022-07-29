@@ -9,8 +9,8 @@
     <meta name="Keywords" content="RedBerry, assignment, Covid, Bootcamp 2022"> -->
     <meta name="author" content="Levan Kereselidze">
     <link rel="stylesheet" href="./assets/css/Personal-info.css">
-    <script src="./assets/script/scripts.js" defer>
-    </script>
+    <script src="./assets/script/scripts.js" defer></script>
+    <script src="./assets/script/skillset.js" defer></script>
 
     <title>Technical Skillset</title>
 </head>
@@ -22,18 +22,29 @@
         <div>
             <form class="personal-info">
                 <select name="skills" id="skillset" class="info-input">
+                    <option></option>
                     <option value="PHP">PHP</option>
                     <option value="C++">C++</option>
+                    <option value="Python">Python</option>
+                    <option value="C#">C#</option>
+                    <option value="Java">Java</option>
+                    <option value="Javascript">Javascript</option>
+                    <option value="Malbolge">Malbolge</option>
                 </select>
                 <br>
-                <input type="text" name="Experience" placeholder="Experience duration in years" class="info-input">
+                <input type="text" name="Experience" placeholder="Experience duration in years" class="info-input"
+                    id="experienceInYears">
                 <div class="addLanguageBtn-wrapper">
-                    <button type="button" class="addLanguageBtn" id="addLanguageBtn">Add Programming Language</button>
+                    <button type="button" class="addLanguageBtn" id="addLanguageBtn">Add Programming language</button>
                 </div>
                 <!--Skills go here-->
-                <div>
-                    <template>
-
+                <div id="listOfSkills">
+                    <template id="skillsetTemplate">
+                        <div class="info-input template-input">
+                            <h4></h4>
+                            <p></p>
+                            <button type="button" class="removeSkillBtn">&#8854;</button>
+                        </div>
                     </template>
                 </div>
                 <div class="pagination">

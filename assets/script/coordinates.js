@@ -1,16 +1,26 @@
 //Form Validation:
 
-const form = document.getElementById("form");
+const nextPageBtn = document.getElementById("nextPage");
 const firstname = document.getElementById("firstName");
 const lastname = document.getElementById("lastName");
 const email = document.getElementById("email");
 const phoneNum = document.getElementById("phoneNum");
-form.addEventListener("submit", (e) => {
+nextPageBtn.addEventListener("click", () => {
   validateInputs();
   if (isFormValid() == true) {
-    form.submit();
+    const gatheredData = {
+      name: firstname.value,
+      lastname: lastname.value,
+      email: email.value,
+      phoneNumber: phoneNum.value,
+    };
+    window.localStorage.setItem(
+      "personal-coordinates",
+      JSON.stringify(gatheredData)
+    );
+    window.location.href = "./skillset.html";
   } else {
-    e.preventDefault();
+    alert("Please provide valid info");
   }
 });
 
@@ -44,13 +54,13 @@ function setSuccess(element) {
 }
 
 function isValidEmail(email) {
-  const re =
+  const regex =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(String(email).toLowerCase());
+  return regex.test(String(email).toLowerCase());
 }
 function isValidPhoneNumber(phoneNum) {
-  const re = /^([+])+[995]\d{11}$/;
-  return re.test(phoneNum);
+  const regex = /[+][9]{2}[5]{2}[0-9]{8}$/g;
+  return regex.test(phoneNum);
 }
 function validateInputs() {
   const firstnameValue = firstname.value.trim();
