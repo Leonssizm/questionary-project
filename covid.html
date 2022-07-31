@@ -20,7 +20,7 @@
         <div>
             <form class="personal-info" name="covidForm">
                 <div class="info-wrapper">
-                    <div class="radio-btn input-control">
+                    <div class="radio-btn input-control" id="workLocation">
                         <label>how would you prefer to work</label><br>
                         <input type="radio" name="location" value="fromOffice">From sairme Office</input><br>
                         <input type="radio" name="location" value="fromHome">From Home</input><br>
@@ -29,22 +29,22 @@
                     </div>
                     <div class="radio-btn input-control">
                         <label>did you contact covid 19? :(</label><br>
-                        <input type="radio" name="covid-contact">Yes</input><br>
-                        <input type="radio" name="covid-contact">No</input>
+                        <input type="radio" name="covid-vaccine" onclick="covidContact(`yes`)">Yes</input><br>
+                        <input type="radio" name="covid-vaccine" onclick="covidContact(`no`)">No</input>
                         <div class="error"></div>
                     </div>
-                    <div class="dates-input input-control">
+                    <div class="dates-input input-control" id="covid-contact-date">
                         <label>When?</label><br>
                         <input type="date" name="covid-contact-date">
                         <div class="error"></div>
                     </div>
                     <div class="radio-btn input-control">
                         <label>Have you been Vaccined?</label><br>
-                        <input type="radio" name="covid-contact">Yes</input><br>
-                        <input type="radio" name="covid-contact">No</input>
+                        <input type="radio" name="covid-contact" onclick="vaccinationDateInput(`yes`)">Yes</input><br>
+                        <input type="radio" name="covid-contact" onclick="vaccinationDateInput(`no`)">No</input>
                         <div class="error"></div>
                     </div>
-                    <div class="dates-input input-control">
+                    <div class="dates-input input-control" id="vaccination-date">
                         <label>When did you get your last covid Vaccine?</label><br>
                         <input type="date" name="covid-contact-date">
                         <div class="error"></div>
@@ -58,7 +58,7 @@
                     <a href="./covid.html">&#9711;</a>
                     <a href="./insights.html">&#9711;</a>
                     <a href="./submit.html">&#9711;</a>
-                    <button type="submit" class="submitBtn">&ogt;</button>
+                    <button type="button" class="nextPageBtn">&ogt;</button>
                 </div>
             </form>
         </div>

@@ -91,7 +91,6 @@ h1 {
   color: #750000;
 }
 .pagination a:active {
-  box-shadow: 0 2px #750000;
   transform: translateY(4px);
 }
 /* Button */
@@ -106,7 +105,8 @@ h1 {
   box-shadow: 0 2px #750000;
   transform: translateY(4px);
 }
-.removeSkillBtn {
+.removeSkillBtn,
+.nextPageBtn {
   color: red;
   border-color: transparent;
   border: 0;
@@ -114,7 +114,8 @@ h1 {
   font-size: 17px;
   font-weight: 400;
 }
-.removeSkillBtn:active {
+.removeSkillBtn:active,
+.nextPageBtn:active {
   transform: translateY(2px);
 }
 
@@ -169,4 +170,16 @@ h1 {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  padding: 0;
+  list-style: none;
+}
+
+#yearsOfExperience,
+#programmingLanguage {
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 10px;
+  font-style: italic;
+  color: #000000;
 }

@@ -10,6 +10,7 @@
     <meta name="author" content="Levan Kereselidze">
     <link rel="stylesheet" href="./assets/css/Personal-info.css">
     <script src="./assets/script/scripts.js" defer></script>
+    <script src="./assets/script/insights.js" defer></script>
     <title>Redberrian insights</title>
 </head>
 
@@ -19,23 +20,20 @@
         <div>
             <form class="personal-info">
                 <div class="info-wrapper insights-wrapper">
-                    <div class="radio-btn insights">
-                        <label>Would you attend Devtalk and maybe also organize your own?</label>
+                    <div class="radio-btn insights" id="devtalk">
+                        <label>Would you attend Devtalk and maybe also organize your own?</label> <br>
+                        <input type="radio" name="devtalk" value="Yes" id="devtalk-yes"
+                            onclick="displayDevtalkForm(`yes`)">Yes</input>
                         <br>
-                        <input type="radio" name="devtalk">Yes</input>
-                        <br>
-                        <input type="radio" name="devtalk">No</input>
+                        <input type="radio" name="devtalk" value="No" id="devtalk-no"
+                            onclick="displayDevtalkForm(`no`)">No</input>
                     </div>
-                    <div class="insights insights-text-inputs devtalk">
+                    <div class=" insights insights-text-inputs devtalk" id="devtalk-field">
                         <label>What would you talk about at Devtalk?</label>
-                        <br>
-                        <br>
                         <input type="text" name="devtalk-topic" placeholder="I would..">
                     </div>
                     <div class="insights insights-text-inputs specials">
                         <label>Tell us something special</label>
-                        <br>
-                        <br>
                         <input type="text" name="something-special" placeholder="I...">
                     </div>
                 </div>
