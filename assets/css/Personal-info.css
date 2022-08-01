@@ -77,6 +77,7 @@ h1 {
 .input-control.error {
   color: #ff3860;
   font-size: 15px;
+  font-style: italic;
   height: 80px;
 }
 .pagination {
@@ -149,6 +150,9 @@ h1 {
 .insights-wrapper {
   margin-left: 50px;
 }
+.specials {
+  margin-top: 50px;
+}
 .insights input {
   border: 1px solid #525557;
 }
@@ -157,7 +161,6 @@ h1 {
 }
 .devtalk input {
   height: 90px;
-  margin-bottom: 10px;
 }
 .specials input {
   height: 50px;

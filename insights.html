@@ -20,21 +20,24 @@
         <div>
             <form class="personal-info">
                 <div class="info-wrapper insights-wrapper">
-                    <div class="radio-btn insights" id="devtalk">
+                    <div class="radio-btn insights input-control" id="devtalk">
                         <label>Would you attend Devtalk and maybe also organize your own?</label> <br>
                         <input type="radio" name="devtalk" value="Yes" id="devtalk-yes"
                             onclick="displayDevtalkForm(`yes`)">Yes</input>
                         <br>
                         <input type="radio" name="devtalk" value="No" id="devtalk-no"
                             onclick="displayDevtalkForm(`no`)">No</input>
+                        <div class="error"></div>
                     </div>
-                    <div class=" insights insights-text-inputs devtalk" id="devtalk-field">
+                    <div class=" insights insights-text-inputs devtalk input-control" id="devtalk-field-wrapper">
                         <label>What would you talk about at Devtalk?</label>
-                        <input type="text" name="devtalk-topic" placeholder="I would..">
+                        <input type="text" name="devtalk-topic" placeholder="I would.." id="devtalk-field">
+                        <div class="error"></div>
                     </div>
-                    <div class="insights insights-text-inputs specials">
+                    <div class="insights insights-text-inputs specials input-control">
                         <label>Tell us something special</label>
-                        <input type="text" name="something-special" placeholder="I...">
+                        <input type="text" name="something-special" placeholder="I..." id="somethingSpecial">
+                        <div class="error"></div>
                     </div>
                 </div>
                 <!-- Pagination -->
@@ -45,7 +48,7 @@
                     <a href="./covid.html">&#9711;</a>
                     <a href="./insights.html">&#9711;</a>
                     <a href="./submit.html">&#9711;</a>
-                    <a id="next-page" onclick="insightsToSubmitForm()" href="#">&ogt;</a>
+                    <button class="nextPageBtn" id="nextPage" type="button">&ogt;</button>
                 </div>
             </form>
         </div>

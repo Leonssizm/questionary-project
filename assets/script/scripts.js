@@ -17,6 +17,3 @@ function skillsetToCovid() {
 function covidToInsights() {
   window.location.href = "./insights.html";
 }
-function insightsToSubmitForm() {
-  window.location.href = "./submit.html";
-}
