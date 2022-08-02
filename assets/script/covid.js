@@ -19,3 +19,5 @@ function vaccinationDateInput(answer) {
     vaccinationDate.style.display = "none";
   }
 }
+
+// Form Validation & & storing gathed data in local storage

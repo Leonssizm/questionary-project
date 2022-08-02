@@ -1,4 +1,4 @@
-//Form Validation:
+//Form Validation & storing gathed data in local storage
 
 const nextPageBtn = document.getElementById("nextPage");
 const firstname = document.getElementById("firstName");
@@ -8,7 +8,7 @@ const phoneNum = document.getElementById("phoneNum");
 nextPageBtn.addEventListener("click", () => {
   validateInputs();
   if (isFormValid() == true) {
-    const gatheredData = {
+    const gatheredDataFromCoordinatesPage = {
       name: firstname.value,
       lastname: lastname.value,
       email: email.value,
@@ -16,7 +16,7 @@ nextPageBtn.addEventListener("click", () => {
     };
     window.localStorage.setItem(
       "personal-coordinates",
-      JSON.stringify(gatheredData)
+      JSON.stringify(gatheredDataFromCoordinatesPage)
     );
     window.location.href = "./skillset.html";
   } else {

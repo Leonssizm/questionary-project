@@ -9,7 +9,7 @@ function displayDevtalkForm(answer) {
   }
 }
 
-// form validation
+// form validation & storing gathed data in local storage
 
 let specialWordsInput = document.getElementById("somethingSpecial");
 let devtalkRadioBtn = document.querySelectorAll('input[name = "devtalk"]');
@@ -19,7 +19,17 @@ const nextPageBtn = document.getElementById("nextPage");
 nextPageBtn.addEventListener("click", () => {
   validateInputs();
   if (isFormValid() == true) {
+    const gatheredDataFromInsightsPage = {
+      devtalkTopic: devtalkField.value.trim(),
+      specialWords: specialWordsInput.value.trim(),
+    };
+    window.localStorage.setItem(
+      "insights",
+      JSON.stringify(gatheredDataFromInsightsPage)
+    );
     window.location.href = "./submit.html";
+  } else {
+    alert("Please provide valid info");
   }
 });
 
@@ -55,7 +65,6 @@ function setSuccess(element) {
 function validateInputs() {
   const specialWordsInputValue = specialWordsInput.value.trim();
   const devtalkFieldValue = devtalkField.value.trim();
-
   if (
     specialWordsInputValue === "" ||
     specialWordsInputValue === null ||
@@ -66,12 +75,14 @@ function validateInputs() {
     setSuccess(specialWordsInput);
   }
 
-  if (
-    devtalkRadioBtn[0].checked == false &&
-    devtalkRadioBtn[1].checked == false
-  ) {
-    alert("Answering the first Question is mandatory");
-  }
+  // if (
+  //   devtalkRadioBtn[0].checked == false &&
+  //   devtalkRadioBtn[1].checked == false
+  // ) {
+  // alert("FIRST Question is mandatory")
+  // } else {
+
+  // }
 
   if (devtalkRadioBtn[0].checked === true) {
     if (devtalkFieldValue === "" || devtalkFieldValue === null) {
