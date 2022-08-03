@@ -21,3 +21,51 @@ function vaccinationDateInput(answer) {
 }
 
 // Form Validation & & storing gathed data in local storage
+const nextPageBtn = document.getElementById("nextPage");
+let workPreferenceRadioBtn = document.querySelectorAll(
+  'input[name = "location"]'
+);
+let covidContactRadioBtn = document.querySelectorAll(
+  'input[name = "covid-contact"]'
+);
+const covidContactDates = document.getElementById("covid-contact-date-input");
+
+nextPageBtn.addEventListener("click", () => {
+  validateInputs();
+});
+
+function setError(element, message) {
+  const inputControl = element.parentElement;
+  const errorDisplay = inputControl.querySelector(".error");
+
+  errorDisplay.innerText = message;
+  inputControl.classList.add("error");
+  inputControl.classList.remove("success");
+}
+
+function setSuccess(element) {
+  const inputControl = element.parentElement;
+  const errorDisplay = inputControl.querySelector(".error");
+
+  errorDisplay.innerText = "";
+  inputControl.classList.add("success");
+  inputControl.classList.remove("error");
+}
+
+function validateInputs() {
+  if (
+    workPreferenceRadioBtn[0].checked == false &&
+    workPreferenceRadioBtn[1].checked == false &&
+    workPreferenceRadioBtn[2].checked == false
+  ) {
+    alert("FIRST QUESTION IS MANDATORY");
+  }
+
+  if (covidContactRadioBtn[0].checked == true) {
+    if (covidContactDates.value == "") {
+      setError(covidContactDates, "*Please fill this field");
+    } else {
+      setSuccess(covidContactDates);
+    }
+  }
+}

@@ -130,19 +130,15 @@ h1 {
   font-size: 17px;
 }
 .radio-btn {
-  margin-bottom: 15px;
-}
-.radio-btn label {
-  padding: 10px;
-  margin-bottom: 20px;
+  margin: 20px 0 15px 0;
 }
 .radio-btn input,
 .dates-input input {
   margin: 10px;
 }
 .dates-input input {
-  width: 400px;
-  height: 45px;
+  width: 350px;
+  height: 40px;
   background: #ffffff;
   border: 1px solid #525557;
 }
