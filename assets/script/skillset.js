@@ -34,3 +34,10 @@ function addSkill() {
     listOfSkills.appendChild(clonedListInfo);
   }
 }
+
+// Back to the previous page Btn
+
+const previousPageBtn = document.getElementById("previousPage");
+previousPageBtn.addEventListener("click", () => {
+  window.location.href = "./coordinates.html";
+});

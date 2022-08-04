@@ -72,6 +72,9 @@ html {
   line-height: 20px;
   color: #ffffff;
 }
+.submitted-applications:active {
+  transform: translateY(4px);
+}
 
 /* RocketMan */
 .image-wrapper {

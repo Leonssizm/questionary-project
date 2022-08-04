@@ -104,3 +104,10 @@ function validateInputs() {
     setSuccess(phoneNum);
   }
 }
+
+// Back to the previous page Btn:
+
+const previousPageBtn = document.getElementById("previousPage");
+previousPageBtn.addEventListener("click", () => {
+  window.location.href = "./index.html";
+});

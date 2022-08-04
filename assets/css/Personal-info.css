@@ -57,13 +57,23 @@ h1 {
   margin-top: 30px;
   border-top: 10px;
   width: 400px;
-  height: 30px;
+  height: 40px;
   background: #ffffff;
   border: 1px solid #525557;
 }
-.info-input::placeholder .insights::placeholder {
+.info-input::placeholder {
   margin: 5px;
   padding-left: 20px;
+  font-family: "Montserrat";
+  font-style: italic;
+  color: #454545;
+}
+.insight-text-inputs::placeholder {
+  margin: 5px;
+  padding-left: 20px;
+  font-family: "Montserrat";
+  font-style: italic;
+  color: #454545;
 }
 .input-control input:focus {
   outline: 0;
@@ -143,6 +153,19 @@ h1 {
   border: 1px solid #525557;
 }
 
+/* Covid page scrollbar */
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+::-webkit-scrollbar-thumb {
+  background: #fe3b1f;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000;
+}
+
 /* insights */
 .insights-wrapper {
   margin-left: 50px;
@@ -153,7 +176,7 @@ h1 {
 .insights input {
   border: 1px solid #525557;
 }
-.insights-text-inputs input {
+.insights-input-fields input {
   width: 380px;
 }
 .devtalk input {
@@ -161,6 +184,13 @@ h1 {
 }
 .specials input {
   height: 50px;
+}
+.insights-text-input::placeholder {
+  margin: 5px;
+  padding-left: 20px;
+  font-family: "Montserrat";
+  font-style: italic;
+  color: #454545;
 }
 
 /* Template */
