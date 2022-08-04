@@ -30,9 +30,51 @@ let covidContactRadioBtn = document.querySelectorAll(
 );
 const covidContactDates = document.getElementById("covid-contact-date-input");
 
+let vaccinationRadioBtn = document.querySelectorAll(
+  'input[name = "covid-vaccine"]'
+);
+let gotVaccineOnThisDay = document.getElementById("vaccination-date-input");
+
 nextPageBtn.addEventListener("click", () => {
   validateInputs();
+  if (isFormValid() == true) {
+    const gatheredCovidData = {
+      workPlaceOffice: workPreferenceRadioBtn[0].checked
+        ? "From Sairme Office"
+        : false,
+      workPlaceHome: workPreferenceRadioBtn[1].checked ? "From Home" : false,
+      workPlaceHybrid: workPreferenceRadioBtn[2].checked ? "Hybrid" : false,
+      covidContact: covidContactDates.value.trim(),
+      vaccinationDate: gotVaccineOnThisDay.value.trim(),
+    };
+    window.localStorage.setItem(
+      "Covid-Information",
+      JSON.stringify(gatheredCovidData)
+    );
+    if (
+      workPreferenceRadioBtn[0].checked == false &&
+      workPreferenceRadioBtn[1].checked == false &&
+      workPreferenceRadioBtn[2].checked == false
+    ) {
+      alert("First Question is mandatory");
+    } else {
+      window.location.href = "./insights.html";
+    }
+  } else {
+    alert("Please Provide Valid data");
+  }
 });
+
+function isFormValid() {
+  const inputContainers = document.querySelectorAll(".input-control");
+  let result = true;
+  inputContainers.forEach((container) => {
+    if (container.classList.contains("error")) {
+      result = false;
+    }
+  });
+  return result;
+}
 
 function setError(element, message) {
   const inputControl = element.parentElement;
@@ -53,19 +95,19 @@ function setSuccess(element) {
 }
 
 function validateInputs() {
-  if (
-    workPreferenceRadioBtn[0].checked == false &&
-    workPreferenceRadioBtn[1].checked == false &&
-    workPreferenceRadioBtn[2].checked == false
-  ) {
-    alert("FIRST QUESTION IS MANDATORY");
-  }
-
   if (covidContactRadioBtn[0].checked == true) {
     if (covidContactDates.value == "") {
       setError(covidContactDates, "*Please fill this field");
     } else {
       setSuccess(covidContactDates);
+    }
+  }
+
+  if (vaccinationRadioBtn[0].checked == true) {
+    if (gotVaccineOnThisDay.value == "") {
+      setError(gotVaccineOnThisDay, "*Please fill this field");
+    } else {
+      setSuccess(gotVaccineOnThisDay);
     }
   }
 }
