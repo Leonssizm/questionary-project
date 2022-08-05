@@ -14,6 +14,9 @@ fetch("https://bootcamp-2022.devtest.ge/api/skills")
       fetchedData += `<option value=${element.title} id=${element.id}>${element.title}</option>`;
     });
     skillsetOptionsTable.innerHTML = fetchedData;
+  })
+  .catch((error) => {
+    alert(error);
   });
 
 addLanguageButton.addEventListener("click", () => {

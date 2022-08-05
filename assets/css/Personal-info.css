@@ -213,3 +213,38 @@ h1 {
   font-style: italic;
   color: #000000;
 }
+
+/* Submitted Applications */
+.submitted-app-body {
+  background-color: black;
+}
+.heading-container {
+  width: 900px;
+}
+.applications-heading {
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+.collapsable-content-table {
+  background-color: #fe3b1f;
+  color: #ffffff;
+  cursor: pointer;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  width: 1000px;
+  height: 40px;
+  margin: 30px 110px 0 110px;
+}
+.collapsable-content-table:hover {
+  background-color: #750000;
+}
+.collapsable-content-table:active {
+  background-color: #f05039;
+}
+.list-image image:hover {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
