@@ -9,7 +9,6 @@ fetch("https://bootcamp-2022.devtest.ge/api/skills")
   .then((response) => response.json())
   .then((data) => {
     let fetchedData;
-
     data.forEach((element) => {
       fetchedData += `<option value=${element.title} id=${element.id}>${element.title}</option>`;
     });
@@ -21,21 +20,48 @@ fetch("https://bootcamp-2022.devtest.ge/api/skills")
 
 addLanguageButton.addEventListener("click", () => {
   addSkill();
-  removeSkill();
 });
 
 function addSkill() {
-  let clonedListInfo = skillsetTemplate.content.cloneNode(true);
-  clonedListInfo.getElementById("programmingLanguage").innerText =
-    skillsetOptionsTable.value;
-  clonedListInfo.getElementById("yearsOfExperience").innerText =
-    experienceInYears.value;
+  const skillId = "skill-" + skillsetOptionsTable.value;
+  if (!document.getElementById(skillId)) {
+    let clonedListInfo = skillsetTemplate.content.cloneNode(true);
+    clonedListInfo.getElementById("programmingLanguage").innerText =
+      skillsetOptionsTable.value;
+    clonedListInfo.getElementById("yearsOfExperience").innerText =
+      experienceInYears.value;
 
-  if (skillsetOptionsTable.value === "" || experienceInYears.value === "") {
-    alert("Please provide the information");
+    clonedListInfo.getElementById("skill-id").id = skillId;
+    clonedListInfo.getElementById("removeSkill").onclick = () => {
+      document
+        .getElementById("listOfSkills")
+        .removeChild(document.getElementById(skillId));
+    };
+    if (skillsetOptionsTable.value === "" || experienceInYears.value === "") {
+      alert("Please provide the information");
+    } else {
+      listOfSkills.appendChild(clonedListInfo);
+    }
   } else {
-    listOfSkills.appendChild(clonedListInfo);
+    return;
   }
+
+  //Validation & storing info in local storage
+  let nextPage = document.getElementById("nextPage");
+  nextPage.addEventListener("click", () => {
+    const skillsetData = {
+      skills: {
+        id: `${skillId}`,
+        experience: `${experienceInYears.value}`,
+      },
+    };
+
+    window.localStorage.setItem(
+      "skillset-information",
+      JSON.stringify(skillsetData)
+    );
+    window.location.href = "./covid.html";
+  });
 }
 
 // Back to the previous page Btn

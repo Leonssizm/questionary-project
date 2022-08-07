@@ -41,9 +41,9 @@ nextPageBtn.addEventListener("click", () => {
     const gatheredCovidData = {
       workPlaceOffice: workPreferenceRadioBtn[0].checked
         ? "From Sairme Office"
-        : false,
-      workPlaceHome: workPreferenceRadioBtn[1].checked ? "From Home" : false,
-      workPlaceHybrid: workPreferenceRadioBtn[2].checked ? "Hybrid" : false,
+        : "Other",
+      workPlaceHome: workPreferenceRadioBtn[1].checked ? "From Home" : "Other",
+      workPlaceHybrid: workPreferenceRadioBtn[2].checked ? "Hybrid" : "Other",
       covidContact: covidContactDates.value.trim(),
       vaccinationDate: gotVaccineOnThisDay.value.trim(),
     };

@@ -244,7 +244,19 @@ h1 {
 .collapsable-content-table:active {
   background-color: #f05039;
 }
-.list-image image:hover {
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
+.list-image {
+  float: right;
+  margin: 4px;
+}
+.list-image:active {
+  transform: rotate(180deg);
+}
+.active {
+  background-color: #f1f1f1;
+}
+.collapsable-content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
 }
