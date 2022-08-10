@@ -226,7 +226,7 @@ h1 {
   font-weight: 700;
   letter-spacing: 3px;
 }
-.collapsable-content-table {
+.accordion-btn {
   background-color: #fe3b1f;
   color: #ffffff;
   cursor: pointer;
@@ -238,25 +238,23 @@ h1 {
   height: 40px;
   margin: 30px 110px 0 110px;
 }
-.collapsable-content-table:hover {
-  background-color: #750000;
-}
-.collapsable-content-table:active {
+.accordion-btn:active {
   background-color: #f05039;
 }
-.list-image {
+.accordion-btn::after {
+  content: "\25be";
   float: right;
-  margin: 4px;
+  transform: scale(1.5);
 }
-.list-image:active {
-  transform: rotate(180deg);
+.accordion-btn-active::after {
+  content: "\25b4";
 }
-.active {
-  background-color: #f1f1f1;
-}
-.collapsable-content {
-  padding: 0 18px;
-  display: none;
+.accordion-content {
+  padding: 0;
   overflow: hidden;
+  max-height: 0;
+  width: 1000px;
+  margin: 0px 110px 0 110px;
+  transition: max-height 0.2s;
   background-color: #f1f1f1;
 }

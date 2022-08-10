@@ -39,18 +39,15 @@ nextPageBtn.addEventListener("click", () => {
   validateInputs();
   if (isFormValid() == true) {
     const gatheredCovidData = {
-      workPlaceOffice: workPreferenceRadioBtn[0].checked
-        ? "From Sairme Office"
-        : "Other",
-      workPlaceHome: workPreferenceRadioBtn[1].checked ? "From Home" : "Other",
-      workPlaceHybrid: workPreferenceRadioBtn[2].checked ? "Hybrid" : "Other",
-      covidContact: covidContactDates.value.trim(),
+      from_office: workPreferenceRadioBtn[0].checked ? true : false,
+      from_home: workPreferenceRadioBtn[1].checked ? true : false,
+      hybrid: workPreferenceRadioBtn[2].checked ? true : false,
+      had_covid: covidContactRadioBtn[0].checked ? true : false,
+      had_covid_at: covidContactDates.value.trim(),
+      vaccinated: vaccinationRadioBtn[0].checked ? true : false,
       vaccinationDate: gotVaccineOnThisDay.value.trim(),
     };
-    window.localStorage.setItem(
-      "Covid-Information",
-      JSON.stringify(gatheredCovidData)
-    );
+    window.localStorage.setItem("covid", JSON.stringify(gatheredCovidData));
     if (
       workPreferenceRadioBtn[0].checked == false &&
       workPreferenceRadioBtn[1].checked == false &&

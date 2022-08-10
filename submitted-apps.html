@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/Personal-info.css">
+    <script defer src="./assets/script/scripts.js"></script>
+    <script defer src="./assets/script/submitted-apps.js"></script>
     <title>Submitted Applications</title>
 </head>
 
@@ -13,11 +15,12 @@
     <div class="heading-container">
         <h1 class="applications-heading">Submitted Applications</h1>
     </div>
-    <button type="button" class="collapsable-content-table">1<img src="./assets/images/Vector1.png" class="list-image"
-            alt="vector">
-    </button>
-    <div class="collapsable-content">
-        <p>Lorem ipsum...</p>
+    <div class="accordion">
+        <button type="button" class="accordion-btn" id="hello">1</button>
+        <section class="accordion-content">
+            <p id="paragraph"></p>
+            <!--Fetched content Will go here-->
+        </section>
     </div>
 </body>
 

@@ -49,12 +49,12 @@ function addSkill() {
   //Validation & storing info in local storage
   let nextPage = document.getElementById("nextPage");
   nextPage.addEventListener("click", () => {
-    const skillsetData = {
-      skills: {
-        id: `${skillId}`,
-        experience: `${experienceInYears.value}`,
-      },
-    };
+    const skillsetData = [
+      (skills = {
+        id: skillId,
+        experience: experienceInYears.value,
+      }),
+    ];
 
     window.localStorage.setItem(
       "skillset-information",

@@ -1,15 +1,15 @@
 //making a collapsible list
 
-const list = document.getElementsByClassName("collapsable-content-table");
-
-for (let i = 0; i < list.length; i++) {
-  list[i].addEventListener("click", () => {
-    this.classList.toggle("active");
-    let content = this.nextElementSibling;
-    if (content.style.display === "block") {
-      content.style.display === "none";
+document.querySelectorAll(".accordion-btn").forEach((button) => {
+  button.addEventListener("click", () => {
+    let accordionContent = button.nextElementSibling;
+    button.classList.toggle("accordion-btn-active");
+    if (button.classList.contains("accordion-btn-active")) {
+      accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
     } else {
-      content.style.display === "none";
+      accordionContent.style.maxHeight = 0;
     }
   });
-}
+});
+
+//fetch data

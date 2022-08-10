@@ -9,10 +9,10 @@ nextPageBtn.addEventListener("click", () => {
   validateInputs();
   if (isFormValid() == true) {
     const gatheredDataFromCoordinatesPage = {
-      name: firstname.value,
-      lastname: lastname.value,
+      first_name: firstname.value,
+      last_name: lastname.value,
       email: email.value,
-      phoneNumber: phoneNum.value,
+      phone: phoneNum.value,
     };
     window.localStorage.setItem(
       "personal-coordinates",
