@@ -12,4 +12,12 @@ document.querySelectorAll(".accordion-btn").forEach((button) => {
   });
 });
 
-//fetch data
+//fetching data from the API
+let submittedAppsBtn = document.getElementById("submittedApps");
+submittedAppsBtn.addEventListener("click", () => {
+  fetch(
+    "https://bootcamp-2022.devtest.ge/api/applications?token=b3fdeb04-8ed1-4544-93ff-8cf46471498c"
+  )
+    .then((response) => response.json())
+    .then((data) => console.log(data));
+});

@@ -8,5 +8,5 @@ function handleSubmitButton() {
 
 localStorage.setItem(
   "token:",
-  JSON.stringify("16e71880-4860-4f4e-abe6-a93d7629eef5")
+  JSON.stringify("b3fdeb04-8ed1-4544-93ff-8cf46471498c")
 );

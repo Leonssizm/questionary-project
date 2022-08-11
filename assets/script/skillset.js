@@ -4,6 +4,11 @@ const skillsetTemplate = document.getElementById("skillsetTemplate");
 const skillsetOptionsTable = document.getElementById("skillset");
 const experienceInYears = document.getElementById("experienceInYears");
 const listOfSkills = document.getElementById("listOfSkills");
+const skills = [];
+let fetchedSkillIdArray = [];
+// if (localStorage.getItem("skillset-information")) {
+//   skills.decode(localStorage.getItem("skillset-information"));
+// }
 
 fetch("https://bootcamp-2022.devtest.ge/api/skills")
   .then((response) => response.json())
@@ -46,20 +51,18 @@ function addSkill() {
     return;
   }
 
+  // making experience value in years(data-type:integer) only for skills object
+  let experience = experienceInYears.value.split(" ");
+  let experienceInYearsInteger = experience.splice(0, 1).join(" ");
+
   //Validation & storing info in local storage
   let nextPage = document.getElementById("nextPage");
   nextPage.addEventListener("click", () => {
-    const skillsetData = [
-      (skills = {
-        id: skillId,
-        experience: experienceInYears.value,
-      }),
-    ];
-
-    window.localStorage.setItem(
-      "skillset-information",
-      JSON.stringify(skillsetData)
-    );
+    skills.push({
+      id: 1,
+      experience: parseInt(experienceInYearsInteger),
+    });
+    window.localStorage.setItem("skillset-information", JSON.stringify(skills));
     window.location.href = "./covid.html";
   });
 }

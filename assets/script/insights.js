@@ -20,6 +20,7 @@ nextPageBtn.addEventListener("click", () => {
   validateInputs();
   if (isFormValid() == true) {
     const gatheredDataFromInsightsPage = {
+      devtalkRadioBtn: devtalkRadioBtn[0].checked ? true : false,
       devtalkTopic: devtalkField.value.trim(),
       specialWords: specialWordsInput.value.trim(),
     };
