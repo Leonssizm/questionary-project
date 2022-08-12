@@ -256,5 +256,38 @@ h1 {
   width: 1000px;
   margin: 0px 110px 0 110px;
   transition: max-height 0.2s;
-  background-color: #f1f1f1;
+  background: #ffffff;
+  border: 0.5px solid #fe3b1f;
+}
+
+/* Content of Fetched data */
+
+.info-header {
+  width: 200px;
+  margin: 10px 0 10px 10px;
+  font-family: "Montserrat";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-decoration-line: underline;
+  color: #fe3b1f;
+}
+.fetched-personal-info {
+  display: flex;
+  justify-content: space-evenly;
+  float: left;
+  font-family: "Montserrat";
+  font-style: italic;
+  font-weight: 400;
+}
+.fetched-info-names {
+  margin: 10px;
+  font-weight: 600;
+}
+.fetched-info-content {
+  margin: 10px;
+}
+.question-header {
+  margin-left: 10px;
 }
