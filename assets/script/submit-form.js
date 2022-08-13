@@ -64,10 +64,14 @@ function submitData() {
     },
   })
     // .then((response) => response.json())
-    .then((data) => console.log(data))
+    .then((data) => {
+      if (data !== "") {
+        alert("Form has been submitted");
+        setTimeout((window.location.href = "./thanks.html"), 5000);
+      }
+    })
     .catch((error) => {
       alert(error);
     });
 }
-
 console.log(body);

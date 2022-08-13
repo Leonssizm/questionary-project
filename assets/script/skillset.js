@@ -4,20 +4,17 @@ const skillsetTemplate = document.getElementById("skillsetTemplate");
 const skillsetOptionsTable = document.getElementById("skillset");
 const experienceInYears = document.getElementById("experienceInYears");
 const listOfSkills = document.getElementById("listOfSkills");
-const skills = [];
-let fetchedSkillIdArray = [];
-// if (localStorage.getItem("skillset-information")) {
-//   skills.decode(localStorage.getItem("skillset-information"));
-// }
-
+const selectedSkills = [];
+let skills = [];
 fetch("https://bootcamp-2022.devtest.ge/api/skills")
   .then((response) => response.json())
   .then((data) => {
-    let fetchedData;
+    skills = data;
+    let skillOptions;
     data.forEach((element) => {
-      fetchedData += `<option value=${element.title} id=${element.id}>${element.title}</option>`;
+      skillOptions += `<option value=${element.title} id=${element.id}>${element.title}</option>`;
     });
-    skillsetOptionsTable.innerHTML = fetchedData;
+    skillsetOptionsTable.innerHTML = skillOptions;
   })
   .catch((error) => {
     alert(error);
@@ -28,7 +25,8 @@ addLanguageButton.addEventListener("click", () => {
 });
 
 function addSkill() {
-  const skillId = "skill-" + skillsetOptionsTable.value;
+  const skillName = skillsetOptionsTable.value;
+  const skillId = "skill-" + skillName;
   if (!document.getElementById(skillId)) {
     let clonedListInfo = skillsetTemplate.content.cloneNode(true);
     clonedListInfo.getElementById("programmingLanguage").innerText =
@@ -55,14 +53,21 @@ function addSkill() {
   let experience = experienceInYears.value.split(" ");
   let experienceInYearsInteger = experience.splice(0, 1).join(" ");
 
+  //retrieving skill by name
+  const skillToAdd = skills.find((skill) => skill.title === skillName);
+
   //Validation & storing info in local storage
   let nextPage = document.getElementById("nextPage");
   nextPage.addEventListener("click", () => {
-    skills.push({
-      id: 1,
+    selectedSkills.push({
+      id: skillToAdd.id,
       experience: parseInt(experienceInYearsInteger),
     });
-    window.localStorage.setItem("skillset-information", JSON.stringify(skills));
+    window.localStorage.setItem(
+      "skillset-information",
+      JSON.stringify(selectedSkills)
+    );
+
     window.location.href = "./covid.html";
   });
 }

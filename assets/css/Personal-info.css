@@ -254,8 +254,8 @@ h1 {
   overflow: hidden;
   max-height: 0;
   width: 1000px;
-  margin: 0px 110px 0 110px;
   transition: max-height 0.2s;
+  margin: 0px 110px 0 110px;
   background: #ffffff;
   border: 0.5px solid #fe3b1f;
 }
@@ -288,6 +288,25 @@ h1 {
 .fetched-info-content {
   margin: 10px;
 }
-.question-header {
-  margin-left: 10px;
+
+/* Fetched covid & work data */
+
+.work-preference-info {
+  font-style: normal;
+  margin: 10px;
+}
+
+#covid-date-title {
+  font-weight: 600;
+}
+#covid-contact-date {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-style: italic;
+  width: 300px;
+  height: 35px;
+  background: #fffcfc;
+  border: 1px transparent #525557;
+  border-radius: 5px;
 }
