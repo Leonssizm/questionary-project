@@ -1,13 +1,12 @@
 // get data from local storage
 
 let coordinatesFromLocalStorage = localStorage.getItem("personal-coordinates");
-let tokenFromLocalStorage = localStorage.getItem("token:");
+let token = localStorage.getItem("token");
 let skillsFromLocalStorage = localStorage.getItem("skillset-information");
 let covidInfo = localStorage.getItem("covid");
 let insights = localStorage.getItem("insights");
 //parsing local storage data
 let coordinates = JSON.parse(coordinatesFromLocalStorage);
-let token = JSON.parse(tokenFromLocalStorage);
 let skills = JSON.parse(skillsFromLocalStorage);
 let covidAndWork = JSON.parse(covidInfo);
 let devtalkAndInsights = JSON.parse(insights);
@@ -33,7 +32,7 @@ if (workArray[2] == true) {
 
 let submitBtn = document.getElementById("submitButton");
 submitBtn.addEventListener("click", submitData);
-const body = {
+let body = {
   token: token,
   first_name: coordinates.first_name,
   last_name: coordinates.last_name,
@@ -57,13 +56,11 @@ const body = {
 function submitData() {
   fetch("https://bootcamp-2022.devtest.ge/api/application", {
     method: "POST",
-    mode: "no-cors",
     body: JSON.stringify({ body }),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
     },
   })
-    // .then((response) => response.json())
     .then((data) => {
       if (data !== "") {
         alert("Form has been submitted");
