@@ -1,0 +1,144 @@
+/* Submitted Applications */
+@font-face {
+  font-family: "Rowdies";
+  src: url(../fonts/Rowdies-Regular.ttf);
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url(../fonts/Montserrat-VariableFont_wght.ttf);
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.submitted-app-body {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.heading-container {
+  width: 900px;
+}
+.applications-heading {
+  color: #ffffff;
+  font-family: "Rowdies";
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+.accordion {
+  width: 800px;
+  margin: 5px 200px 0 50px;
+}
+
+.accordion .contentBox {
+  position: relative;
+  margin: 10px 20px;
+}
+.accordion .contentBox .label {
+  position: relative;
+  padding: 10px;
+  background: #fe3b1f;
+  color: #f4f4f4;
+}
+.accordion .contentBox .label::before {
+  content: " \25be ";
+  position: absolute;
+  color: #f4f4f4;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  font-size: 1.5em;
+}
+.accordion .contentBox.active .label::before {
+  content: "\25b4";
+}
+.accordion .contentBox .content {
+  position: relative;
+  background: #f4f4f4;
+  height: 0;
+  overflow: hidden;
+  transition: 0.5s;
+  overflow-y: auto;
+}
+/* ScrollBar */
+::-webkit-scrollbar {
+  width: 15px;
+}
+::-webkit-scrollbar-thumb {
+  background: #fe3b1f;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000;
+}
+
+.accordion .contentBox.active .content {
+  height: 500px;
+  padding: 10px;
+}
+
+/* Fetched Content Data */
+
+.info-header {
+  width: 200px;
+  margin: 10px 0 10px 10px;
+  font-family: "Montserrat";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-decoration-line: underline;
+  color: #fe3b1f;
+}
+.fetched-personal-info {
+  display: flex;
+  justify-content: space-evenly;
+  float: left;
+  font-family: "Montserrat";
+  font-style: italic;
+  font-weight: 400;
+}
+.fetched-info-names {
+  margin: 10px;
+  font-weight: 400;
+}
+
+/* Fetched covid & work data */
+
+.work-preference-info {
+  font-family: "Montserrat";
+  margin: 10px;
+}
+.covid-question-header,
+.covid-question {
+  margin: 10px;
+  font-family: "Montserrat";
+}
+.vaccine-question-header,
+.vaccination-question {
+  margin: 10px;
+  font-family: "Montserrat";
+}
+.sub-questions {
+  font-weight: 600;
+}
+
+#covid-date-title {
+  font-weight: 600;
+}
+#covid-contact-vaccination-date {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 11px;
+  font-style: italic;
+  width: 300px;
+  height: 35px;
+  background-color: #ffffff;
+  border: 1px solid #525557;
+  border-radius: 2px;
+}
