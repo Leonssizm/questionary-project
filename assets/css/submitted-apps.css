@@ -64,6 +64,7 @@ body {
   transition: 0.5s;
   overflow-y: auto;
 }
+
 /* ScrollBar */
 ::-webkit-scrollbar {
   width: 15px;
@@ -77,8 +78,9 @@ body {
 }
 
 .accordion .contentBox.active .content {
-  height: 500px;
+  height: 700px;
   padding: 10px;
+  background-color: #ffffff;
 }
 
 /* Fetched Content Data */
@@ -123,6 +125,11 @@ body {
   margin: 10px;
   font-family: "Montserrat";
 }
+.devtalk-question-header,
+.devtalk-question {
+  margin: 10px;
+  font-family: "Montserrat";
+}
 .sub-questions {
   font-weight: 600;
 }
@@ -141,4 +148,31 @@ body {
   background-color: #ffffff;
   border: 1px solid #525557;
   border-radius: 2px;
+}
+
+.skillset-insights-right {
+  float: right;
+}
+
+.devtalk-specials-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 10px;
+  font-size: 11px;
+  width: 300px;
+  height: 60px;
+  background-color: #ffffff;
+  border: 1px solid #525557;
+  border-radius: 2px;
+}
+
+.skills-info {
+  display: flex;
+  font-family: "Montserrat";
+  font-style: italic;
+}
+.skill-title {
+  margin: 0 50px 0 10px;
+  font-style: italic;
 }
