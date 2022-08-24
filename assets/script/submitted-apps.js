@@ -1,15 +1,35 @@
 //making a collapsible list
 
 const accordion = document.getElementsByClassName("contentBox");
+const accordionLabel = document.getElementsByClassName("label");
 setTimeout(function () {
-  for (let i = 0; i < accordion.length; i++) {
-    accordion[i].addEventListener("click", function () {
-      this.classList.toggle("active");
+  for (let i = 0; i < accordionLabel.length; i++) {
+    accordionLabel[i].addEventListener("click", () => {
+      accordion[i].classList.toggle("active");
     });
   }
-}, 4000);
-// skills data from skillset page (previously fetched from API & stored in local storage)
-let skillsFromApi = JSON.parse(localStorage.getItem("fetchedSkillsArr"));
+}, 3000);
+
+//fetching skills data From API
+let skillsFromApi = [];
+
+fetch("https://bootcamp-2022.devtest.ge/api/skills")
+  .then((response) => response.json())
+  .then((data) => {
+    data.forEach((skillAndId) => {
+      skillsFromApi.push(skillAndId);
+    });
+  });
+
+//function to get skill titles
+
+function getSkillTitle(id) {
+  return skillsFromApi.find((skill) => {
+    if (skill.id === id) {
+      return skill.title;
+    }
+  });
+}
 
 fetch(
   "https://bootcamp-2022.devtest.ge/api/applications?token=" +
@@ -98,20 +118,14 @@ fetch(
       }
 
       // handle skillset dynamic data
-      let userSkillTurnedToId;
-      let experience;
-      form.skills.forEach((skillAndExperience) => {
-        userSkillTurnedToId = skillAndExperience.id;
-        experience = skillAndExperience.experience;
-        skillsFromApi.forEach((skill) => {
-          if (skill.id === userSkillTurnedToId) {
-            skillsData = `
-            <div class="skills-info">
-            <p><span class="skill-title">${skill.title}</span> Years of Experience: ${experience}
-            </div>
-            `;
-          }
-        });
+      form.skills.forEach((skill) => {
+        const skillIdAndTitle = getSkillTitle(skill.id);
+
+        skillsData = `
+        <div class ="skills-info">
+        <p><span class="skill-title">${skillIdAndTitle.title}</span> Years of Experience ${skill.experience}</p>
+        </div>
+        `;
       });
 
       //handle insights & devtalk Dynamic data

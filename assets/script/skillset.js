@@ -6,7 +6,6 @@ const experienceInYears = document.getElementById("experienceInYears");
 const listOfSkills = document.getElementById("listOfSkills");
 const selectedSkills = [];
 let skills = [];
-let fetchedDataArr = [];
 
 fetch("https://bootcamp-2022.devtest.ge/api/skills")
   .then((response) => response.json())
@@ -15,7 +14,6 @@ fetch("https://bootcamp-2022.devtest.ge/api/skills")
     let skillOptions;
     data.forEach((element) => {
       skillOptions += `<option value=${element.title} id=${element.id}>${element.title}</option>`;
-      fetchedDataArr.push(element);
     });
     skillsetOptionsTable.innerHTML = skillOptions;
   })
@@ -71,10 +69,6 @@ function addSkill() {
       JSON.stringify(selectedSkills)
     );
 
-    window.localStorage.setItem(
-      "fetchedSkillsArr",
-      JSON.stringify(fetchedDataArr)
-    );
     window.location.href = "./covid.html";
   });
 }
