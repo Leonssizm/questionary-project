@@ -41,10 +41,11 @@ fetch(
     let workPreferenceData = "";
     let covidData = "";
     let vaccinationData = "";
-    let skillsData = "";
+
     let insightsData = "";
 
     data.forEach((form, index) => {
+      let skillsData = "";
       //handle work preference dynamic data
       if (form.work_preference === "from_office") {
         workPreferenceData = `
@@ -121,7 +122,7 @@ fetch(
       form.skills.forEach((skill) => {
         const skillIdAndTitle = getSkillTitle(skill.id);
 
-        skillsData = `
+        skillsData += `
         <div class ="skills-info">
         <p><span class="skill-title">${skillIdAndTitle.title}</span> Years of Experience ${skill.experience}</p>
         </div>

@@ -6,6 +6,7 @@ const experienceInYears = document.getElementById("experienceInYears");
 const listOfSkills = document.getElementById("listOfSkills");
 const selectedSkills = [];
 let skills = [];
+let skillNames = [];
 
 fetch("https://bootcamp-2022.devtest.ge/api/skills")
   .then((response) => response.json())
@@ -14,6 +15,7 @@ fetch("https://bootcamp-2022.devtest.ge/api/skills")
     let skillOptions;
     data.forEach((element) => {
       skillOptions += `<option value=${element.title} id=${element.id}>${element.title}</option>`;
+      skillNames.push(element.title);
     });
     skillsetOptionsTable.innerHTML = skillOptions;
   })
@@ -21,9 +23,7 @@ fetch("https://bootcamp-2022.devtest.ge/api/skills")
     alert(error);
   });
 
-addLanguageButton.addEventListener("click", () => {
-  addSkill();
-});
+addLanguageButton.addEventListener("click", addSkill);
 
 function addSkill() {
   const skillName = skillsetOptionsTable.value;
@@ -75,7 +75,31 @@ function addSkill() {
 
 // Back to the previous page Btn
 
-const previousPageBtn = document.getElementById("previousPage");
-previousPageBtn.addEventListener("click", () => {
+const backToCoordinates = document.getElementById("backToCoordinates");
+backToCoordinates.addEventListener("click", function backToCoordinates() {
   window.location.href = "./coordinates.html";
 });
+
+if (localStorage.getItem("skillset-information") !== null) {
+  let clonedListInfo = skillsetTemplate.content.cloneNode(true);
+  //prepare experience data
+  let skillsFromLocalStorage = JSON.parse(
+    localStorage.getItem("skillset-information")
+  );
+
+  //prepare skill name data UNDER CONSTRUCTION
+
+  skillsFromLocalStorage.forEach((skillAndExperience) => {
+    (clonedListInfo.getElementById("yearsOfExperience").innerHTML =
+      skillAndExperience.experience + " Years Of Experience"),
+      (clonedListInfo.getElementById("programmingLanguage").innerText =
+        skillAndExperience.id);
+    clonedListInfo.getElementById("removeSkill").onclick = () => {
+      document
+        .getElementById("listOfSkills")
+        .removeChild(document.getElementById("skill-id"));
+    };
+  });
+
+  listOfSkills.appendChild(clonedListInfo);
+}

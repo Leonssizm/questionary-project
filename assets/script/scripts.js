@@ -1,4 +1,20 @@
+let coordinatesInLocalStorage = localStorage.getItem("personal-coordinates");
+let skillsetInLocalStorage = localStorage.getItem("skillset-information");
+let covidInLocalStorage = localStorage.getItem("covid");
+let insightsInLocalStorage = localStorage.getItem("insights");
+
+//Handle token, landing page and ending questionary
+
 function handleStartQuestionary() {
+  if (
+    coordinatesInLocalStorage !== null ||
+    skillsetInLocalStorage !== null ||
+    covidInLocalStorage !== null ||
+    insightsInLocalStorage !== null
+  ) {
+    window.localStorage.clear();
+  }
+
   window.location.href = "./coordinates.html";
 }
 

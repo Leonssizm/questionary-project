@@ -165,6 +165,12 @@ h1 {
 ::-webkit-scrollbar-thumb:hover {
   background: #b30000;
 }
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background: url(/assets/images/calendar.png) no-repeat;
+  width: 20px;
+  height: 20px;
+  border-width: thin;
+}
 
 /* insights */
 .insights-wrapper {

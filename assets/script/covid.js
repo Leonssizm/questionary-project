@@ -1,14 +1,14 @@
 //vaccination & covid contact date input
 
-const covidContactDate = document.getElementById("covid-contact-date");
+const covidContactDateLabel = document.getElementById("covid-contact-date");
 const vaccinationDate = document.getElementById("vaccination-date");
-covidContactDate.style.display = "none";
+covidContactDateLabel.style.display = "none";
 vaccinationDate.style.display = "none";
 function covidContact(answer) {
   if (answer == `yes`) {
-    covidContactDate.style.display = "block";
+    covidContactDateLabel.style.display = "block";
   } else {
-    covidContactDate.style.display = "none";
+    covidContactDateLabel.style.display = "none";
   }
 }
 
@@ -28,7 +28,9 @@ let workPreferenceRadioBtn = document.querySelectorAll(
 let covidContactRadioBtn = document.querySelectorAll(
   'input[name = "covid-contact"]'
 );
-const covidContactDates = document.getElementById("covid-contact-date-input");
+const covidContactDatesInput = document.getElementById(
+  "covid-contact-date-input"
+);
 
 let vaccinationRadioBtn = document.querySelectorAll(
   'input[name = "covid-vaccine"]'
@@ -43,7 +45,7 @@ nextPageBtn.addEventListener("click", () => {
       from_home: workPreferenceRadioBtn[1].checked ? true : false,
       hybrid: workPreferenceRadioBtn[2].checked ? true : false,
       had_covid: covidContactRadioBtn[0].checked ? true : false,
-      had_covid_at: covidContactDates.value.trim(),
+      had_covid_at: covidContactDatesInput.value.trim(),
       vaccinated: vaccinationRadioBtn[0].checked ? true : false,
       vaccinationDate: gotVaccineOnThisDay.value.trim(),
     };
@@ -93,10 +95,10 @@ function setSuccess(element) {
 
 function validateInputs() {
   if (covidContactRadioBtn[0].checked == true) {
-    if (covidContactDates.value == "") {
-      setError(covidContactDates, "*Please fill this field");
+    if (covidContactDatesInput.value == "") {
+      setError(covidContactDatesInput, "*Please fill this field");
     } else {
-      setSuccess(covidContactDates);
+      setSuccess(covidContactDatesInput);
     }
   }
 
@@ -115,3 +117,39 @@ const previousPageBtn = document.getElementById("previousPage");
 previousPageBtn.addEventListener("click", () => {
   window.location.href = "./skillset.html";
 });
+
+// When returning to the previous page, submitted values are displayed.
+
+if (localStorage.getItem("covid") !== null) {
+  // Display work preference radio button choice
+  if (JSON.parse(localStorage.getItem("covid")).from_office == true) {
+    workPreferenceRadioBtn[0].checked = true;
+  } else if (JSON.parse(localStorage.getItem("covid")).from_home == true) {
+    workPreferenceRadioBtn[1].checked = true;
+  } else if (JSON.parse(localStorage.getItem("covid")).hybrid == true) {
+    workPreferenceRadioBtn[2].checked = true;
+  }
+
+  // Display Covid Contact Choice
+
+  if (JSON.parse(localStorage.getItem("covid")).had_covid == true) {
+    covidContactRadioBtn[0].checked = true;
+    covidContactDateLabel.style.display = "block";
+    covidContactDatesInput.value = JSON.parse(
+      localStorage.getItem("covid")
+    ).had_covid_at;
+  } else {
+    covidContactRadioBtn[1].checked = true;
+  }
+
+  // Display vaccination choice
+  if (JSON.parse(localStorage.getItem("covid")).vaccinated == true) {
+    vaccinationRadioBtn[0].checked = true;
+    vaccinationDate.style.display = "block";
+    gotVaccineOnThisDay.value = JSON.parse(
+      localStorage.getItem("covid")
+    ).vaccinationDate;
+  } else {
+    vaccinationRadioBtn[1].checked = true;
+  }
+}

@@ -18,6 +18,7 @@ nextPageBtn.addEventListener("click", () => {
       "personal-coordinates",
       JSON.stringify(gatheredDataFromCoordinatesPage)
     );
+
     window.location.href = "./skillset.html";
   } else {
     alert("Please provide valid info");
@@ -107,7 +108,22 @@ function validateInputs() {
 
 // Back to the previous page Btn:
 
-const previousPageBtn = document.getElementById("previousPage");
+const previousPageBtn = document.getElementById("backToFirstPage");
 previousPageBtn.addEventListener("click", () => {
   window.location.href = "./index.html";
 });
+
+// When returning to the previous page, submitted values are displayed.
+
+if (localStorage.getItem("personal-coordinates") !== null) {
+  firstname.value = JSON.parse(
+    localStorage.getItem("personal-coordinates")
+  ).first_name;
+  lastname.value = JSON.parse(
+    localStorage.getItem("personal-coordinates")
+  ).last_name;
+  email.value = JSON.parse(localStorage.getItem("personal-coordinates")).email;
+  phoneNum.value = JSON.parse(
+    localStorage.getItem("personal-coordinates")
+  ).phone;
+}

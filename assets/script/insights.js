@@ -76,15 +76,6 @@ function validateInputs() {
     setSuccess(specialWordsInput);
   }
 
-  // if (
-  //   devtalkRadioBtn[0].checked == false &&
-  //   devtalkRadioBtn[1].checked == false
-  // ) {
-  // alert("FIRST Question is mandatory")
-  // } else {
-
-  // }
-
   if (devtalkRadioBtn[0].checked === true) {
     if (devtalkFieldValue === "" || devtalkFieldValue === null) {
       setError(devtalkField, "*Please fill this field");
@@ -99,3 +90,20 @@ const previousPageBtn = document.getElementById("previousPage");
 previousPageBtn.addEventListener("click", () => {
   window.location.href = "./covid.html";
 });
+
+// When returning to the previous page, submitted values are displayed.
+
+if (localStorage.getItem("insights") !== null) {
+  if (JSON.parse(localStorage.getItem("insights")).devtalkRadioBtn === true) {
+    devtalkRadioBtn[0].checked = true;
+    devtalkFieldWrapper.style.display = "block";
+    devtalkField.value = JSON.parse(
+      localStorage.getItem("insights")
+    ).devtalkTopic;
+  } else {
+    devtalkRadioBtn[1].checked = true;
+  }
+  specialWordsInput.value = JSON.parse(
+    localStorage.getItem("insights")
+  ).specialWords;
+}
