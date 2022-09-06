@@ -23,6 +23,44 @@ fetch("https://bootcamp-2022.devtest.ge/api/skills")
     alert(error);
   });
 
+
+//fetching skills data From API
+let skillsFromApi = [];
+  fetch("https://bootcamp-2022.devtest.ge/api/skills")
+  .then((response) => response.json())
+  .then((data) => {
+    data.forEach((skillAndId) => {
+      skillsFromApi.push(skillAndId);
+    });
+
+    if (localStorage.getItem("skillset-information") !== null) {
+      //prepare experience data
+      let skillsFromLocalStorage = JSON.parse(
+        localStorage.getItem("skillset-information")
+      );
+    
+      //prepare skill name data UNDER CONSTRUCTION
+      skillsFromLocalStorage.forEach((skillAndExperience) => {
+        let clonedListInfo = skillsetTemplate.content.cloneNode(true);
+        
+        clonedListInfo.getElementById("yearsOfExperience").innerHTML = skillAndExperience.experience + " Years Of Experience";
+        clonedListInfo.getElementById("programmingLanguage").innerText = getSkill(skillAndExperience.id).title;
+        
+        clonedListInfo.getElementById("removeSkill").onclick = () => {
+          document.getElementById("listOfSkills").removeChild(document.getElementById("skill-id"));
+        };
+    
+        listOfSkills.appendChild(clonedListInfo);
+      });
+    }
+  });
+
+//function to get skill titles
+
+function getSkill(id) {
+  return skillsFromApi.find((skill) => skill.id === id );
+}
+
 addLanguageButton.addEventListener("click", addSkill);
 
 function addSkill() {
@@ -80,26 +118,4 @@ backToCoordinates.addEventListener("click", function backToCoordinates() {
   window.location.href = "./coordinates.html";
 });
 
-if (localStorage.getItem("skillset-information") !== null) {
-  let clonedListInfo = skillsetTemplate.content.cloneNode(true);
-  //prepare experience data
-  let skillsFromLocalStorage = JSON.parse(
-    localStorage.getItem("skillset-information")
-  );
 
-  //prepare skill name data UNDER CONSTRUCTION
-
-  skillsFromLocalStorage.forEach((skillAndExperience) => {
-    (clonedListInfo.getElementById("yearsOfExperience").innerHTML =
-      skillAndExperience.experience + " Years Of Experience"),
-      (clonedListInfo.getElementById("programmingLanguage").innerText =
-        skillAndExperience.id);
-    clonedListInfo.getElementById("removeSkill").onclick = () => {
-      document
-        .getElementById("listOfSkills")
-        .removeChild(document.getElementById("skill-id"));
-    };
-  });
-
-  listOfSkills.appendChild(clonedListInfo);
-}
