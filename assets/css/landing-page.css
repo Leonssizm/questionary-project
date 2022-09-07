@@ -36,20 +36,28 @@ html {
   align-items: center;
   justify-content: center;
 }
+.btn-wrapper a,
 .btn-wrapper button {
+  display: flex;
+  align-content: stretch;
+  justify-content: center;
+  align-items: center;
   width: 250px;
   height: 50px;
   border-radius: 50px;
   margin-top: 55px;
   background-color: #fe3b1f;
+  text-decoration: none;
   font-family: "Montserrat";
   font-size: 15px;
   line-height: 20px;
   color: #ffffff;
 }
+.btn-wrapper a:hover,
 .btn-wrapper button:hover {
   background-color: red;
 }
+.btn-wrapper a:active,
 .btn-wrapper button:active {
   box-shadow: 0 2px #750000;
   transform: translateY(4px);

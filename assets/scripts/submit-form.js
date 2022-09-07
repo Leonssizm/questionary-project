@@ -64,6 +64,14 @@ function submitData() {
     .then((data) => {
       if (data !== "") {
         alert("Form has been submitted");
+        if (
+          coordinatesFromLocalStorage !== null ||
+          skillsFromLocalStorage !== null ||
+          covidInfo !== null ||
+          insights !== null
+        ) {
+          window.localStorage.clear();
+        }
         setTimeout((window.location.href = "./thanks.html"), 5000);
       }
     })
