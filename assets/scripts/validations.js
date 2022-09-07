@@ -33,9 +33,12 @@ function setSuccess(element) {
 }
 
 function required(element) {
-  return element !== null && element !== "";
+  return element === null || element === "";
 }
 
-function minLength(name, surname) {
-  return name.length >= 2 && surname.length >= 3;
+function firstnameMinLength(firstname) {
+  return firstname.length > 1;
+}
+function lastnameMinLength(lastname) {
+  return lastname.length > 2;
 }

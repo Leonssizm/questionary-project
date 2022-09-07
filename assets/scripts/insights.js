@@ -48,18 +48,14 @@ function isFormValid() {
 function validateInputs() {
   const specialWordsInputValue = specialWordsInput.value.trim();
   const devtalkFieldValue = devtalkField.value.trim();
-  if (
-    specialWordsInputValue === "" ||
-    specialWordsInputValue === null ||
-    specialWordsInputValue.length < 2
-  ) {
+  if (required(specialWordsInput) || specialWordsInputValue.length < 2) {
     setError(specialWordsInput, "*Please fill this field");
   } else {
     setSuccess(specialWordsInput);
   }
 
   if (devtalkRadioBtn[0].checked === true) {
-    if (devtalkFieldValue === "" || devtalkFieldValue === null) {
+    if (required(devtalkFieldValue)) {
       setError(devtalkField, "*Please fill this field");
     } else {
       setSuccess(devtalkField);

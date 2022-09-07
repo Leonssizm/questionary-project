@@ -5,9 +5,8 @@ const firstnameElement = document.getElementById("firstName");
 const lastnameElement = document.getElementById("lastName");
 const emailElement = document.getElementById("email");
 const phoneNumberElement = document.getElementById("phoneNum");
-let formIsValid = true;
+
 nextPageBtn.addEventListener("click", () => {
-  validateInputs();
   if (validateInputs()) {
     window.localStorage.setItem(
       "personal-coordinates",
@@ -26,34 +25,26 @@ nextPageBtn.addEventListener("click", () => {
 });
 
 function validateInputs() {
+  let formIsValid = true;
   const firstnameValue = firstnameElement.value.trim();
   const lastnameValue = lastnameElement.value.trim();
   const emailValue = emailElement.value.trim();
   const phoneNumberValue = phoneNumberElement.value.trim();
 
-  if (
-    firstnameValue === "" ||
-    firstnameValue === null ||
-    firstnameValue.length < 2
-  ) {
+  if (required(firstnameValue) || !firstnameMinLength(firstnameValue)) {
     formIsValid = false;
     setError(firstnameElement, "*First name is required");
   } else {
     setSuccess(firstnameElement);
   }
 
-  if (
-    lastnameValue === "" ||
-    lastnameValue === null ||
-    lastnameValue.length < 3
-  ) {
+  if (required(lastnameValue) || !lastnameMinLength(lastnameValue)) {
     formIsValid = false;
     setError(lastnameElement, "*Last name should include 3 or more characters");
   } else {
     setSuccess(lastnameElement);
   }
-
-  if (emailValue === "" || emailValue === null) {
+  if (required(emailValue)) {
     formIsValid = false;
     setError(emailElement, "*Email is required");
   } else if (!isValidEmail(emailValue)) {
@@ -63,7 +54,7 @@ function validateInputs() {
     setSuccess(emailElement);
   }
 
-  if (phoneNumberValue === "" || phoneNumberValue === null) {
+  if (required(phoneNumberValue)) {
     setSuccess(phoneNumberElement);
   } else if (!isValidPhoneNumber(phoneNumberValue)) {
     formIsValid = false;
