@@ -3,7 +3,7 @@ body {
   margin: 0;
 }
 html {
-  background: url(../icons/stars.svg);
+  background: url(/assets/images/stars.png);
   background-color: black;
 }
 @font-face {

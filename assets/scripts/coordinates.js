@@ -1,73 +1,45 @@
 //Form Validation & storing gathed data in local storage
 
 const nextPageBtn = document.getElementById("nextPage");
-const firstname = document.getElementById("firstName");
-const lastname = document.getElementById("lastName");
-const email = document.getElementById("email");
-const phoneNum = document.getElementById("phoneNum");
+const firstnameElement = document.getElementById("firstName");
+const lastnameElement = document.getElementById("lastName");
+const emailElement = document.getElementById("email");
+const phoneNumberElement = document.getElementById("phoneNum");
+let formIsValid = true;
 nextPageBtn.addEventListener("click", () => {
   validateInputs();
-  if (isFormValid() == true) {
-    const gatheredDataFromCoordinatesPage = {
-      first_name: firstname.value,
-      last_name: lastname.value,
-      email: email.value,
-      phone: phoneNum.value,
-    };
+  if (validateInputs()) {
     window.localStorage.setItem(
       "personal-coordinates",
-      JSON.stringify(gatheredDataFromCoordinatesPage)
+      JSON.stringify({
+        first_name: firstnameElement.value,
+        last_name: lastnameElement.value,
+        email: emailElement.value,
+        phone: phoneNumberElement.value,
+      })
     );
 
     window.location.href = "./skillset.html";
   } else {
-    alert("Please provide valid info");
+    alert("Please provide valid information");
   }
 });
 
-function isFormValid() {
-  const inputContainers = form.querySelectorAll(".input-control");
-  let result = true;
-  inputContainers.forEach((container) => {
-    if (container.classList.contains("error")) {
-      result = false;
-    }
-  });
-  return result;
-}
-
-function setError(element, message) {
-  const inputControl = element.parentElement;
-  const errorDisplay = inputControl.querySelector(".error");
-
-  errorDisplay.innerText = message;
-  inputControl.classList.add("error");
-  inputControl.classList.remove("success");
-}
-
-function setSuccess(element) {
-  const inputControl = element.parentElement;
-  const errorDisplay = inputControl.querySelector(".error");
-
-  errorDisplay.innerText = "";
-  inputControl.classList.add("success");
-  inputControl.classList.remove("error");
-}
-
 function validateInputs() {
-  const firstnameValue = firstname.value.trim();
-  const lastnameValue = lastname.value.trim();
-  const emailValue = email.value.trim();
-  const phoneNumValue = phoneNum.value.trim();
+  const firstnameValue = firstnameElement.value.trim();
+  const lastnameValue = lastnameElement.value.trim();
+  const emailValue = emailElement.value.trim();
+  const phoneNumberValue = phoneNumberElement.value.trim();
 
   if (
     firstnameValue === "" ||
     firstnameValue === null ||
     firstnameValue.length < 2
   ) {
-    setError(firstname, "*First name is required");
+    formIsValid = false;
+    setError(firstnameElement, "*First name is required");
   } else {
-    setSuccess(firstname);
+    setSuccess(firstnameElement);
   }
 
   if (
@@ -75,39 +47,47 @@ function validateInputs() {
     lastnameValue === null ||
     lastnameValue.length < 3
   ) {
-    setError(lastname, "*Last name should include 3 or more characters");
+    formIsValid = false;
+    setError(lastnameElement, "*Last name should include 3 or more characters");
   } else {
-    setSuccess(lastname);
+    setSuccess(lastnameElement);
   }
 
   if (emailValue === "" || emailValue === null) {
-    setError(email, "*Email is required");
+    formIsValid = false;
+    setError(emailElement, "*Email is required");
   } else if (!isValidEmail(emailValue)) {
-    setError(email, "*Provide a Valid email address");
+    formIsValid = false;
+    setError(emailElement, "*Provide a Valid email address");
   } else {
-    setSuccess(email);
+    setSuccess(emailElement);
   }
 
-  if (phoneNumValue === "" || phoneNumValue === null) {
-    setSuccess(phoneNum);
-  } else if (!isValidPhoneNumber(phoneNumValue)) {
-    setError(phoneNum, "Provide a valid phone number");
+  if (phoneNumberValue === "" || phoneNumberValue === null) {
+    setSuccess(phoneNumberElement);
+  } else if (!isValidPhoneNumber(phoneNumberValue)) {
+    formIsValid = false;
+    setError(phoneNumberElement, "Provide a valid phone number");
   } else {
-    setSuccess(phoneNum);
+    setSuccess(phoneNumberElement);
   }
+
+  return formIsValid;
 }
 
 // When returning to the previous page, submitted values are displayed.
 
 if (localStorage.getItem("personal-coordinates") !== null) {
-  firstname.value = JSON.parse(
+  firstnameElement.value = JSON.parse(
     localStorage.getItem("personal-coordinates")
   ).first_name;
-  lastname.value = JSON.parse(
+  lastnameElement.value = JSON.parse(
     localStorage.getItem("personal-coordinates")
   ).last_name;
-  email.value = JSON.parse(localStorage.getItem("personal-coordinates")).email;
-  phoneNum.value = JSON.parse(
+  emailElement.value = JSON.parse(
+    localStorage.getItem("personal-coordinates")
+  ).email;
+  phoneNumberElement.value = JSON.parse(
     localStorage.getItem("personal-coordinates")
   ).phone;
 }
