@@ -166,7 +166,7 @@ h1 {
   background: #b30000;
 }
 input[type="date"]::-webkit-calendar-picker-indicator {
-  background: url(/assets/images/calendar.png) no-repeat;
+  background: url(/assets/icons/calendar.svg) no-repeat;
   width: 20px;
   height: 20px;
   border-width: thin;

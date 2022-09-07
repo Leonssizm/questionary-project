@@ -71,4 +71,3 @@ function submitData() {
       alert(error);
     });
 }
-console.log(body);

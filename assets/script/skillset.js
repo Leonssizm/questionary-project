@@ -23,10 +23,9 @@ fetch("https://bootcamp-2022.devtest.ge/api/skills")
     alert(error);
   });
 
-
 //fetching skills data From API
 let skillsFromApi = [];
-  fetch("https://bootcamp-2022.devtest.ge/api/skills")
+fetch("https://bootcamp-2022.devtest.ge/api/skills")
   .then((response) => response.json())
   .then((data) => {
     data.forEach((skillAndId) => {
@@ -38,18 +37,22 @@ let skillsFromApi = [];
       let skillsFromLocalStorage = JSON.parse(
         localStorage.getItem("skillset-information")
       );
-    
+
       //prepare skill name data UNDER CONSTRUCTION
       skillsFromLocalStorage.forEach((skillAndExperience) => {
         let clonedListInfo = skillsetTemplate.content.cloneNode(true);
-        
-        clonedListInfo.getElementById("yearsOfExperience").innerHTML = skillAndExperience.experience + " Years Of Experience";
-        clonedListInfo.getElementById("programmingLanguage").innerText = getSkill(skillAndExperience.id).title;
-        
+
+        clonedListInfo.getElementById("yearsOfExperience").innerHTML =
+          skillAndExperience.experience + " Years Of Experience";
+        clonedListInfo.getElementById("programmingLanguage").innerText =
+          getSkill(skillAndExperience.id).title;
+
         clonedListInfo.getElementById("removeSkill").onclick = () => {
-          document.getElementById("listOfSkills").removeChild(document.getElementById("skill-id"));
+          document
+            .getElementById("listOfSkills")
+            .removeChild(document.getElementById("skill-id"));
         };
-    
+
         listOfSkills.appendChild(clonedListInfo);
       });
     }
@@ -58,7 +61,7 @@ let skillsFromApi = [];
 //function to get skill titles
 
 function getSkill(id) {
-  return skillsFromApi.find((skill) => skill.id === id );
+  return skillsFromApi.find((skill) => skill.id === id);
 }
 
 addLanguageButton.addEventListener("click", addSkill);
@@ -110,12 +113,3 @@ function addSkill() {
     window.location.href = "./covid.html";
   });
 }
-
-// Back to the previous page Btn
-
-const backToCoordinates = document.getElementById("backToCoordinates");
-backToCoordinates.addEventListener("click", function backToCoordinates() {
-  window.location.href = "./coordinates.html";
-});
-
-

@@ -106,13 +106,6 @@ function validateInputs() {
   }
 }
 
-// Back to the previous page Btn:
-
-const previousPageBtn = document.getElementById("backToFirstPage");
-previousPageBtn.addEventListener("click", () => {
-  window.location.href = "./index.html";
-});
-
 // When returning to the previous page, submitted values are displayed.
 
 if (localStorage.getItem("personal-coordinates") !== null) {
