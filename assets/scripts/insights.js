@@ -17,16 +17,14 @@ let devtalkField = document.getElementById("devtalk-field");
 
 const nextPageBtn = document.getElementById("nextPage");
 nextPageBtn.addEventListener("click", () => {
-  validateInputs();
-  if (isFormValid() == true) {
-    const gatheredDataFromInsightsPage = {
-      devtalkRadioBtn: devtalkRadioBtn[0].checked ? true : false,
-      devtalkTopic: devtalkField.value.trim(),
-      specialWords: specialWordsInput.value.trim(),
-    };
+  if (validateInputs()) {
     window.localStorage.setItem(
       "insights",
-      JSON.stringify(gatheredDataFromInsightsPage)
+      JSON.stringify({
+        devtalkRadioBtn: devtalkRadioBtn[0].checked ? true : false,
+        devtalkTopic: devtalkField.value.trim(),
+        specialWords: specialWordsInput.value.trim(),
+      })
     );
     window.location.href = "./submit.html";
   } else {
@@ -34,21 +32,12 @@ nextPageBtn.addEventListener("click", () => {
   }
 });
 
-function isFormValid() {
-  const inputContainers = document.querySelectorAll(".input-control");
-  let result = true;
-  inputContainers.forEach((container) => {
-    if (container.classList.contains("error")) {
-      result = false;
-    }
-  });
-  return result;
-}
-
 function validateInputs() {
+  let formIsValid = true;
   const specialWordsInputValue = specialWordsInput.value.trim();
   const devtalkFieldValue = devtalkField.value.trim();
-  if (required(specialWordsInput) || specialWordsInputValue.length < 2) {
+  if (required(specialWordsInput) || !minLength(specialWordsInputValue, 2)) {
+    formIsValid = false;
     setError(specialWordsInput, "*Please fill this field");
   } else {
     setSuccess(specialWordsInput);
@@ -56,26 +45,26 @@ function validateInputs() {
 
   if (devtalkRadioBtn[0].checked === true) {
     if (required(devtalkFieldValue)) {
+      formIsValid = false;
       setError(devtalkField, "*Please fill this field");
     } else {
       setSuccess(devtalkField);
     }
   }
+  return formIsValid;
 }
 
 // When returning to the previous page, submitted values are displayed.
 
 if (localStorage.getItem("insights") !== null) {
-  if (JSON.parse(localStorage.getItem("insights")).devtalkRadioBtn === true) {
+  let insightsFromLocalStorage = JSON.parse(localStorage.getItem("insights"));
+
+  if (insightsFromLocalStorage.devtalkRadioBtn === true) {
     devtalkRadioBtn[0].checked = true;
     devtalkFieldWrapper.style.display = "block";
-    devtalkField.value = JSON.parse(
-      localStorage.getItem("insights")
-    ).devtalkTopic;
+    devtalkField.value = insightsFromLocalStorage.devtalkTopic;
   } else {
     devtalkRadioBtn[1].checked = true;
   }
-  specialWordsInput.value = JSON.parse(
-    localStorage.getItem("insights")
-  ).specialWords;
+  specialWordsInput.value = insightsFromLocalStorage.specialWords;
 }

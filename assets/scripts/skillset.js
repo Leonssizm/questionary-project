@@ -32,13 +32,11 @@ fetch("https://bootcamp-2022.devtest.ge/api/skills")
       skillsFromApi.push(skillAndId);
     });
 
-    if (localStorage.getItem("skillset-information") !== null) {
-      //prepare experience data
-      let skillsFromLocalStorage = JSON.parse(
-        localStorage.getItem("skillset-information")
-      );
-
-      //prepare skill name data UNDER CONSTRUCTION
+    let skillsFromLocalStorage = JSON.parse(
+      localStorage.getItem("skillset-information")
+    );
+    if (skillsFromLocalStorage !== null) {
+      //prepare skill name data
       skillsFromLocalStorage.forEach((skillAndExperience) => {
         let clonedListInfo = skillsetTemplate.content.cloneNode(true);
 

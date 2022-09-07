@@ -31,14 +31,15 @@ function validateInputs() {
   const emailValue = emailElement.value.trim();
   const phoneNumberValue = phoneNumberElement.value.trim();
 
-  if (required(firstnameValue) || !firstnameMinLength(firstnameValue)) {
+  console.log(firstnameValue);
+  if (required(firstnameValue) || !minLength(firstnameValue, 2)) {
     formIsValid = false;
     setError(firstnameElement, "*First name is required");
   } else {
     setSuccess(firstnameElement);
   }
 
-  if (required(lastnameValue) || !lastnameMinLength(lastnameValue)) {
+  if (required(lastnameValue) || !minLength(lastnameValue, 3)) {
     formIsValid = false;
     setError(lastnameElement, "*Last name should include 3 or more characters");
   } else {
@@ -69,16 +70,11 @@ function validateInputs() {
 // When returning to the previous page, submitted values are displayed.
 
 if (localStorage.getItem("personal-coordinates") !== null) {
-  firstnameElement.value = JSON.parse(
+  const personalCoordinates = JSON.parse(
     localStorage.getItem("personal-coordinates")
-  ).first_name;
-  lastnameElement.value = JSON.parse(
-    localStorage.getItem("personal-coordinates")
-  ).last_name;
-  emailElement.value = JSON.parse(
-    localStorage.getItem("personal-coordinates")
-  ).email;
-  phoneNumberElement.value = JSON.parse(
-    localStorage.getItem("personal-coordinates")
-  ).phone;
+  );
+  firstnameElement.value = personalCoordinates.first_name;
+  lastnameElement.value = personalCoordinates.last_name;
+  emailElement.value = personalCoordinates.email;
+  phoneNumberElement.value = personalCoordinates.phone;
 }

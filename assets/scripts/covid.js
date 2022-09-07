@@ -38,18 +38,19 @@ let vaccinationRadioBtn = document.querySelectorAll(
 let gotVaccineOnThisDay = document.getElementById("vaccination-date-input");
 
 nextPageBtn.addEventListener("click", () => {
-  validateInputs();
-  if (isFormValid() == true) {
-    const gatheredCovidData = {
-      from_office: workPreferenceRadioBtn[0].checked ? true : false,
-      from_home: workPreferenceRadioBtn[1].checked ? true : false,
-      hybrid: workPreferenceRadioBtn[2].checked ? true : false,
-      had_covid: covidContactRadioBtn[0].checked ? true : false,
-      had_covid_at: covidContactDatesInput.value.trim(),
-      vaccinated: vaccinationRadioBtn[0].checked ? true : false,
-      vaccinationDate: gotVaccineOnThisDay.value.trim(),
-    };
-    window.localStorage.setItem("covid", JSON.stringify(gatheredCovidData));
+  if (validateInputs()) {
+    window.localStorage.setItem(
+      "covid",
+      JSON.stringify({
+        from_office: workPreferenceRadioBtn[0].checked ? true : false,
+        from_home: workPreferenceRadioBtn[1].checked ? true : false,
+        hybrid: workPreferenceRadioBtn[2].checked ? true : false,
+        had_covid: covidContactRadioBtn[0].checked ? true : false,
+        had_covid_at: covidContactDatesInput.value.trim(),
+        vaccinated: vaccinationRadioBtn[0].checked ? true : false,
+        vaccinationDate: gotVaccineOnThisDay.value.trim(),
+      })
+    );
     if (
       workPreferenceRadioBtn[0].checked == false &&
       workPreferenceRadioBtn[1].checked == false &&
@@ -64,20 +65,11 @@ nextPageBtn.addEventListener("click", () => {
   }
 });
 
-function isFormValid() {
-  const inputContainers = document.querySelectorAll(".input-control");
-  let result = true;
-  inputContainers.forEach((container) => {
-    if (container.classList.contains("error")) {
-      result = false;
-    }
-  });
-  return result;
-}
-
 function validateInputs() {
+  let formIsValid = true;
   if (covidContactRadioBtn[0].checked == true) {
-    if (covidContactDatesInput.value == "") {
+    if (required(covidContactDatesInput.value)) {
+      formIsValid = false;
       setError(covidContactDatesInput, "*Please fill this field");
     } else {
       setSuccess(covidContactDatesInput);
@@ -85,45 +77,45 @@ function validateInputs() {
   }
 
   if (vaccinationRadioBtn[0].checked == true) {
-    if (gotVaccineOnThisDay.value == "") {
+    if (required(gotVaccineOnThisDay.value)) {
+      formIsValid = false;
       setError(gotVaccineOnThisDay, "*Please fill this field");
     } else {
       setSuccess(gotVaccineOnThisDay);
     }
   }
+  return formIsValid;
 }
 
 // When returning to the previous page, submitted values are displayed.
 
 if (localStorage.getItem("covid") !== null) {
+  let COVID_JOB_VACCINATION_DATA = JSON.parse(localStorage.getItem("covid"));
+
   // Display work preference radio button choice
-  if (JSON.parse(localStorage.getItem("covid")).from_office == true) {
+  if (COVID_JOB_VACCINATION_DATA.from_office == true) {
     workPreferenceRadioBtn[0].checked = true;
-  } else if (JSON.parse(localStorage.getItem("covid")).from_home == true) {
+  } else if (COVID_JOB_VACCINATION_DATA.from_home == true) {
     workPreferenceRadioBtn[1].checked = true;
-  } else if (JSON.parse(localStorage.getItem("covid")).hybrid == true) {
+  } else if (COVID_JOB_VACCINATION_DATA.hybrid == true) {
     workPreferenceRadioBtn[2].checked = true;
   }
 
   // Display Covid Contact Choice
 
-  if (JSON.parse(localStorage.getItem("covid")).had_covid == true) {
+  if (COVID_JOB_VACCINATION_DATA.had_covid == true) {
     covidContactRadioBtn[0].checked = true;
     covidContactDateLabel.style.display = "block";
-    covidContactDatesInput.value = JSON.parse(
-      localStorage.getItem("covid")
-    ).had_covid_at;
+    covidContactDatesInput.value = COVID_JOB_VACCINATION_DATA.had_covid_at;
   } else {
     covidContactRadioBtn[1].checked = true;
   }
 
   // Display vaccination choice
-  if (JSON.parse(localStorage.getItem("covid")).vaccinated == true) {
+  if (COVID_JOB_VACCINATION_DATA.vaccinated == true) {
     vaccinationRadioBtn[0].checked = true;
     vaccinationDate.style.display = "block";
-    gotVaccineOnThisDay.value = JSON.parse(
-      localStorage.getItem("covid")
-    ).vaccinationDate;
+    gotVaccineOnThisDay.value = COVID_JOB_VACCINATION_DATA.vaccinationDate;
   } else {
     vaccinationRadioBtn[1].checked = true;
   }

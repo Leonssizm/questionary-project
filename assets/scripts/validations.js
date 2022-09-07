@@ -31,14 +31,10 @@ function setSuccess(element) {
   inputControl.classList.add("success");
   inputControl.classList.remove("error");
 }
-
 function required(element) {
   return element === null || element === "";
 }
 
-function firstnameMinLength(firstname) {
-  return firstname.length > 1;
-}
-function lastnameMinLength(lastname) {
-  return lastname.length > 2;
+function minLength(element, length) {
+  return element.length > length;
 }

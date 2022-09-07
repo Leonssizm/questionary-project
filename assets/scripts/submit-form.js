@@ -32,31 +32,32 @@ if (workArray[2] == true) {
 
 let submitBtn = document.getElementById("submitButton");
 submitBtn.addEventListener("click", submitData);
-let body = {
-  token: token,
-  first_name: coordinates.first_name,
-  last_name: coordinates.last_name,
-  email: coordinates.email,
-  phone: coordinates.phone,
-  skills: skills,
-  work_preference: chosenWorkPreference,
-  had_covid: covidAndWork.had_covid,
-  ...(covidAndWork.had_covid && { had_covid_at: covidAndWork.had_covid_at }),
-  vaccinated: covidAndWork.vaccinated,
-  ...(covidAndWork.vaccinated && {
-    vaccinated_at: covidAndWork.vaccinationDate,
-  }),
-  will_organize_devtalk: devtalkAndInsights.devtalkRadioBtn,
-  ...(devtalkAndInsights.devtalkRadioBtn && {
-    devtalk_topic: devtalkAndInsights.devtalkTopic,
-  }),
-  something_special: devtalkAndInsights.specialWords,
-};
 
 function submitData() {
   fetch("https://bootcamp-2022.devtest.ge/api/application", {
     method: "POST",
-    body: JSON.stringify({ body }),
+    body: JSON.stringify({
+      token: token,
+      first_name: coordinates.first_name,
+      last_name: coordinates.last_name,
+      email: coordinates.email,
+      phone: coordinates.phone,
+      skills: skills,
+      work_preference: chosenWorkPreference,
+      had_covid: covidAndWork.had_covid,
+      ...(covidAndWork.had_covid && {
+        had_covid_at: covidAndWork.had_covid_at,
+      }),
+      vaccinated: covidAndWork.vaccinated,
+      ...(covidAndWork.vaccinated && {
+        vaccinated_at: covidAndWork.vaccinationDate,
+      }),
+      will_organize_devtalk: devtalkAndInsights.devtalkRadioBtn,
+      ...(devtalkAndInsights.devtalkRadioBtn && {
+        devtalk_topic: devtalkAndInsights.devtalkTopic,
+      }),
+      something_special: devtalkAndInsights.specialWords,
+    }),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
     },
