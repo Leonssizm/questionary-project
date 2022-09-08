@@ -55,10 +55,9 @@ h1 {
 /* BG input */
 .info-input {
   margin-top: 30px;
-  border-top: 10px;
   width: 400px;
   height: 40px;
-  background: #ffffff;
+  padding: 1px 2px;
   border: 1px solid #525557;
 }
 .info-input::placeholder {
@@ -106,10 +105,12 @@ h1 {
 }
 /* Button */
 .addLanguageBtn {
-  margin: 15px 25px 15px 250px;
-  height: 31px;
+  margin: 20px 25px 15px 230px;
+  height: 35px;
+  width: 200px;
   background-color: #fe3b1f;
   border: 1px transparent;
+  border-radius: 3px;
   color: wheat;
 }
 .addLanguageBtn:active {
