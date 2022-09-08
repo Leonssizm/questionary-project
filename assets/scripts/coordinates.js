@@ -60,8 +60,6 @@ function validateInputs() {
   } else if (!isValidPhoneNumber(phoneNumberValue)) {
     formIsValid = false;
     setError(phoneNumberElement, "Provide a valid phone number");
-  } else {
-    setSuccess(phoneNumberElement);
   }
 
   return formIsValid;
