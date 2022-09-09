@@ -31,7 +31,6 @@ function validateInputs() {
   const emailValue = emailElement.value.trim();
   const phoneNumberValue = phoneNumberElement.value.trim();
 
-  console.log(firstnameValue);
   if (required(firstnameValue) || !minLength(firstnameValue, 2)) {
     formIsValid = false;
     setError(firstnameElement, "*First name is required");

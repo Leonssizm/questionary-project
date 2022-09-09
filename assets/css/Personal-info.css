@@ -153,6 +153,10 @@ h1 {
   background: #ffffff;
   border: 1px solid #525557;
 }
+#covid-contact-date,
+#vaccination-date {
+  display: none;
+}
 
 /* Covid page scrollbar */
 
@@ -199,7 +203,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-style: italic;
   color: #454545;
 }
-
+#devtalk-field-wrapper {
+  display: none;
+}
 /* Template */
 
 .template-input {

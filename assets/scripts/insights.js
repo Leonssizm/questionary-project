@@ -1,18 +1,13 @@
 //devtalk topic input
 let devtalkFieldWrapper = document.getElementById("devtalk-field-wrapper");
-devtalkFieldWrapper.style.display = "none";
 function displayDevtalkForm(answer) {
-  if (answer == `yes`) {
-    devtalkFieldWrapper.style.display = "block";
-  } else {
-    devtalkFieldWrapper.style.display = "none";
-  }
+  devtalkFieldWrapper.style.display = answer === "yes" ? "block" : "none";
 }
 
 // form validation & storing gathed data in local storage
 
 let specialWordsInput = document.getElementById("somethingSpecial");
-let devtalkRadioBtn = document.querySelectorAll('input[name = "devtalk"]');
+let devtalkRadioButtons = document.querySelectorAll('input[name = "devtalk"]');
 let devtalkField = document.getElementById("devtalk-field");
 
 const nextPageBtn = document.getElementById("nextPage");
@@ -21,7 +16,7 @@ nextPageBtn.addEventListener("click", () => {
     window.localStorage.setItem(
       "insights",
       JSON.stringify({
-        devtalkRadioBtn: devtalkRadioBtn[0].checked ? true : false,
+        devtalkRadioBtn: !!devtalkRadioButtons[0].checked,
         devtalkTopic: devtalkField.value.trim(),
         specialWords: specialWordsInput.value.trim(),
       })
@@ -43,7 +38,7 @@ function validateInputs() {
     setSuccess(specialWordsInput);
   }
 
-  if (devtalkRadioBtn[0].checked === true) {
+  if (devtalkRadioButtons[0].checked) {
     if (required(devtalkFieldValue)) {
       formIsValid = false;
       setError(devtalkField, "*Please fill this field");
@@ -59,12 +54,12 @@ function validateInputs() {
 if (localStorage.getItem("insights") !== null) {
   let insightsFromLocalStorage = JSON.parse(localStorage.getItem("insights"));
 
-  if (insightsFromLocalStorage.devtalkRadioBtn === true) {
-    devtalkRadioBtn[0].checked = true;
+  if (insightsFromLocalStorage.devtalkRadioBtn) {
+    devtalkRadioButtons[0].checked = true;
     devtalkFieldWrapper.style.display = "block";
     devtalkField.value = insightsFromLocalStorage.devtalkTopic;
   } else {
-    devtalkRadioBtn[1].checked = true;
+    devtalkRadioButtons[1].checked = true;
   }
   specialWordsInput.value = insightsFromLocalStorage.specialWords;
 }

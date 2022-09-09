@@ -130,7 +130,7 @@ fetch(
       });
 
       //handle insights & devtalk Dynamic data
-      if (form.will_organize_devtalk == true) {
+      if (form.will_organize_devtalk) {
         insightsData = `
         <h4 class="devtalk-question-header">Would you attend Devtalks and maybe also <br> organize your own?</h4>
         <div class="devtalk-question">

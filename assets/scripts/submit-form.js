@@ -20,15 +20,13 @@ let workArray = [
 ];
 let chosenWorkPreference;
 
-if (workArray[0] == true) {
-  chosenWorkPreference = "hybrid";
-}
-if (workArray[1] == true) {
-  chosenWorkPreference = "from_home";
-}
-if (workArray[2] == true) {
-  chosenWorkPreference = "from_office";
-}
+workArray[0]
+  ? (chosenWorkPreference = "hybrid")
+  : workArray[1]
+  ? (chosenWorkPreference = "from_home")
+  : workArray[2]
+  ? (chosenWorkPreference = "from_office")
+  : null;
 
 let submitBtn = document.getElementById("submitButton");
 submitBtn.addEventListener("click", submitData);
