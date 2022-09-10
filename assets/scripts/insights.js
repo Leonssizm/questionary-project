@@ -31,10 +31,8 @@ function validateInputs() {
   let formIsValid = true;
   const specialWordsInputValue = specialWordsInput.value.trim();
   const devtalkFieldValue = devtalkField.value.trim();
-  if (
-    !isFilled(specialWordsInput) ||
-    !lengthIsLonger(specialWordsInputValue, 2)
-  ) {
+
+  if (!isFilled(specialWordsInput) || !lengthIsLonger(specialWordsInputValue, 2)) {
     formIsValid = false;
     setError(specialWordsInput, "*Please fill this field");
   } else {

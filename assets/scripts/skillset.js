@@ -32,9 +32,7 @@ fetch("https://bootcamp-2022.devtest.ge/api/skills")
       skillsFromApi.push(skillAndId);
     });
 
-    let skillsFromLocalStorage = JSON.parse(
-      localStorage.getItem("skillset-information")
-    );
+    let skillsFromLocalStorage = JSON.parse(localStorage.getItem("skillset-information"));
     if (skillsFromLocalStorage !== null) {
       //prepare skill name data
       skillsFromLocalStorage.forEach((skillAndExperience) => {
@@ -42,8 +40,9 @@ fetch("https://bootcamp-2022.devtest.ge/api/skills")
 
         clonedListInfo.getElementById("yearsOfExperience").innerHTML =
           skillAndExperience.experience + " Years Of Experience";
-        clonedListInfo.getElementById("programmingLanguage").innerText =
-          getSkill(skillAndExperience.id).title;
+        clonedListInfo.getElementById("programmingLanguage").innerText = getSkill(
+          skillAndExperience.id
+        ).title;
 
         clonedListInfo.getElementById("removeSkill").onclick = () => {
           document
@@ -103,10 +102,7 @@ function addSkill() {
       id: skillToAdd.id,
       experience: parseInt(experienceInYearsInteger),
     });
-    window.localStorage.setItem(
-      "skillset-information",
-      JSON.stringify(selectedSkills)
-    );
+    window.localStorage.setItem("skillset-information", JSON.stringify(selectedSkills));
 
     window.location.href = "./covid.html";
   });

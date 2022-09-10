@@ -1,5 +1,3 @@
-//Form Validation & storing gathed data in local storage
-
 const nextPageBtn = document.getElementById("nextPage");
 const firstnameElement = document.getElementById("firstName");
 const lastnameElement = document.getElementById("lastName");
@@ -68,9 +66,7 @@ function validateInputs() {
 // When returning to the previous page, submitted values are displayed.
 
 if (localStorage.getItem("personal-coordinates") !== null) {
-  const personalCoordinates = JSON.parse(
-    localStorage.getItem("personal-coordinates")
-  );
+  const personalCoordinates = JSON.parse(localStorage.getItem("personal-coordinates"));
   firstnameElement.value = personalCoordinates.first_name;
   lastnameElement.value = personalCoordinates.last_name;
   emailElement.value = personalCoordinates.email;

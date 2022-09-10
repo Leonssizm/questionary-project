@@ -13,11 +13,7 @@ let devtalkAndInsights = JSON.parse(insights);
 
 //to pinpoint the exact work preference
 
-let workArray = [
-  covidAndWork.hybrid,
-  covidAndWork.from_home,
-  covidAndWork.from_office,
-];
+let workArray = [covidAndWork.hybrid, covidAndWork.from_home, covidAndWork.from_office];
 let chosenWorkPreference;
 
 workArray[0]

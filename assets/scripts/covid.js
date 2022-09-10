@@ -12,19 +12,11 @@ function vaccinationDateInput(answer) {
 
 // Form Validation & & storing gathed data in local storage
 const nextPageBtn = document.getElementById("nextPage");
-let workPreferenceRadioButtons = document.querySelectorAll(
-  'input[name = "location"]'
-);
-let covidContactRadioButtons = document.querySelectorAll(
-  'input[name = "covid-contact"]'
-);
-const covidContactDatesInput = document.getElementById(
-  "covid-contact-date-input"
-);
+let workPreferenceRadioButtons = document.querySelectorAll('input[name = "location"]');
+let covidContactRadioButtons = document.querySelectorAll('input[name = "covid-contact"]');
+const covidContactDatesInput = document.getElementById("covid-contact-date-input");
 
-let vaccinationRadioButtons = document.querySelectorAll(
-  'input[name = "covid-vaccine"]'
-);
+let vaccinationRadioButtons = document.querySelectorAll('input[name = "covid-vaccine"]');
 let gotVaccineOnThisDay = document.getElementById("vaccination-date-input");
 
 nextPageBtn.addEventListener("click", () => {
