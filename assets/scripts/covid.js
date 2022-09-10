@@ -58,7 +58,7 @@ nextPageBtn.addEventListener("click", () => {
 function validateInputs() {
   let formIsValid = true;
   if (covidContactRadioButtons[0].checked) {
-    if (required(covidContactDatesInput.value)) {
+    if (!isFilled(covidContactDatesInput.value)) {
       formIsValid = false;
       setError(covidContactDatesInput, "*Please fill this field");
     } else {
@@ -67,7 +67,7 @@ function validateInputs() {
   }
 
   if (vaccinationRadioButtons[0].checked) {
-    if (required(gotVaccineOnThisDay.value)) {
+    if (!isFilled(gotVaccineOnThisDay.value)) {
       formIsValid = false;
       setError(gotVaccineOnThisDay, "*Please fill this field");
     } else {

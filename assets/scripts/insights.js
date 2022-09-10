@@ -31,7 +31,10 @@ function validateInputs() {
   let formIsValid = true;
   const specialWordsInputValue = specialWordsInput.value.trim();
   const devtalkFieldValue = devtalkField.value.trim();
-  if (required(specialWordsInput) || !minLength(specialWordsInputValue, 2)) {
+  if (
+    !isFilled(specialWordsInput) ||
+    !lengthIsLonger(specialWordsInputValue, 2)
+  ) {
     formIsValid = false;
     setError(specialWordsInput, "*Please fill this field");
   } else {
@@ -39,7 +42,7 @@ function validateInputs() {
   }
 
   if (devtalkRadioButtons[0].checked) {
-    if (required(devtalkFieldValue)) {
+    if (!isFilled(devtalkFieldValue)) {
       formIsValid = false;
       setError(devtalkField, "*Please fill this field");
     } else {

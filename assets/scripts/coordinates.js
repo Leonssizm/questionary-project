@@ -31,20 +31,21 @@ function validateInputs() {
   const emailValue = emailElement.value.trim();
   const phoneNumberValue = phoneNumberElement.value.trim();
 
-  if (required(firstnameValue) || !minLength(firstnameValue, 2)) {
+  if (!isFilled(firstnameValue) || !lengthIsLonger(firstnameValue, 2)) {
     formIsValid = false;
     setError(firstnameElement, "*First name is required");
   } else {
     setSuccess(firstnameElement);
   }
 
-  if (required(lastnameValue) || !minLength(lastnameValue, 3)) {
+  if (!isFilled(lastnameValue) || !lengthIsLonger(lastnameValue, 3)) {
     formIsValid = false;
     setError(lastnameElement, "*Last name should include 3 or more characters");
   } else {
     setSuccess(lastnameElement);
   }
-  if (required(emailValue)) {
+
+  if (!isFilled(emailValue)) {
     formIsValid = false;
     setError(emailElement, "*Email is required");
   } else if (!isValidEmail(emailValue)) {
@@ -54,7 +55,7 @@ function validateInputs() {
     setSuccess(emailElement);
   }
 
-  if (required(phoneNumberValue)) {
+  if (!isFilled(phoneNumberValue)) {
     setSuccess(phoneNumberElement);
   } else if (!isValidPhoneNumber(phoneNumberValue)) {
     formIsValid = false;

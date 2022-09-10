@@ -14,6 +14,14 @@ function isValidPhoneNumber(phoneNum) {
   return REGEX.PHONE.test(phoneNum);
 }
 
+function isFilled(element) {
+  return element !== null && element !== "";
+}
+
+function lengthIsLonger(element, length) {
+  return element.length > length;
+}
+
 function setError(element, message) {
   const inputControl = element.parentElement;
   const errorDisplay = inputControl.querySelector(".error");
@@ -30,11 +38,4 @@ function setSuccess(element) {
   errorDisplay.innerText = "";
   inputControl.classList.add("success");
   inputControl.classList.remove("error");
-}
-function required(element) {
-  return element === null || element === "";
-}
-
-function minLength(element, length) {
-  return element.length > length;
 }
