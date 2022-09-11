@@ -28,8 +28,8 @@
                     </div>
                     <div class="radio-btn input-control">
                         <label>did you contact covid 19? :(</label><br>
-                        <input type="radio" name="covid-contact" onclick="covidContact(`yes`)">Yes</input><br>
-                        <input type="radio" name="covid-contact" onclick="covidContact(`no`)">No</input>
+                        <input type="radio" name="covid-contact" onclick="showCovidContact(`yes`)">Yes</input><br>
+                        <input type="radio" name="covid-contact" onclick="showCovidContact(`no`)">No</input>
                         <div class="error"></div>
                     </div>
                     <div class="dates-input input-control" id="covid-contact-date">
@@ -39,8 +39,9 @@
                     </div>
                     <div class="radio-btn input-control">
                         <label>Have you been Vaccined?</label><br>
-                        <input type="radio" name="covid-vaccine" onclick="vaccinationDateInput(`yes`)">Yes</input><br>
-                        <input type="radio" name="covid-vaccine" onclick="vaccinationDateInput(`no`)">No</input>
+                        <input type="radio" name="covid-vaccine"
+                            onclick="showVaccinationDateInput(`yes`)">Yes</input><br>
+                        <input type="radio" name="covid-vaccine" onclick="showVaccinationDateInput(`no`)">No</input>
                         <div class="error"></div>
                     </div>
                     <div class="dates-input input-control" id="vaccination-date">

@@ -1,5 +1,6 @@
 //devtalk topic input
 let devtalkFieldWrapper = document.getElementById("devtalk-field-wrapper");
+
 function displayDevtalkForm(answer) {
   devtalkFieldWrapper.style.display = answer === "yes" ? "block" : "none";
 }
@@ -11,6 +12,7 @@ let devtalkRadioButtons = document.querySelectorAll('input[name = "devtalk"]');
 let devtalkField = document.getElementById("devtalk-field");
 
 const nextPageBtn = document.getElementById("nextPage");
+
 nextPageBtn.addEventListener("click", () => {
   if (validateInputs()) {
     window.localStorage.setItem(
@@ -53,14 +55,14 @@ function validateInputs() {
 // When returning to the previous page, submitted values are displayed.
 
 if (localStorage.getItem("insights") !== null) {
-  let insightsFromLocalStorage = JSON.parse(localStorage.getItem("insights"));
+  let insights = JSON.parse(localStorage.getItem("insights"));
 
-  if (insightsFromLocalStorage.devtalkRadioBtn) {
+  if (insights.devtalkRadioBtn) {
     devtalkRadioButtons[0].checked = true;
     devtalkFieldWrapper.style.display = "block";
-    devtalkField.value = insightsFromLocalStorage.devtalkTopic;
+    devtalkField.value = insights.devtalkTopic;
   } else {
     devtalkRadioButtons[1].checked = true;
   }
-  specialWordsInput.value = insightsFromLocalStorage.specialWords;
+  specialWordsInput.value = insights.specialWords;
 }

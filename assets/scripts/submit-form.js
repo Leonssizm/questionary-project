@@ -1,28 +1,23 @@
 // get data from local storage
-
-let coordinatesFromLocalStorage = localStorage.getItem("personal-coordinates");
 let token = localStorage.getItem("token");
-let skillsFromLocalStorage = localStorage.getItem("skillset-information");
-let covidInfo = localStorage.getItem("covid");
-let insights = localStorage.getItem("insights");
+
 //parsing local storage data
-let coordinates = JSON.parse(coordinatesFromLocalStorage);
-let skills = JSON.parse(skillsFromLocalStorage);
-let covidAndWork = JSON.parse(covidInfo);
-let devtalkAndInsights = JSON.parse(insights);
+let coordinates = JSON.parse(localStorage.getItem("personal-coordinates"));
+let skills = JSON.parse(localStorage.getItem("skillset-information"));
+let covidAndWork = JSON.parse(localStorage.getItem("covid"));
+let devtalkAndInsights = JSON.parse(localStorage.getItem("insights"));
 
 //to pinpoint the exact work preference
-
 let workArray = [covidAndWork.hybrid, covidAndWork.from_home, covidAndWork.from_office];
 let chosenWorkPreference;
 
-workArray[0]
-  ? (chosenWorkPreference = "hybrid")
-  : workArray[1]
-  ? (chosenWorkPreference = "from_home")
-  : workArray[2]
-  ? (chosenWorkPreference = "from_office")
-  : null;
+if (workArray[0]) {
+  chosenWorkPreference = "hybrid";
+} else if (workArray[1]) {
+  chosenWorkPreference = "from_home";
+} else {
+  chosenWorkPreference = "from_office";
+}
 
 let submitBtn = document.getElementById("submitButton");
 submitBtn.addEventListener("click", submitData);
@@ -59,14 +54,8 @@ function submitData() {
     .then((data) => {
       if (data !== "") {
         alert("Form has been submitted");
-        if (
-          coordinatesFromLocalStorage !== null ||
-          skillsFromLocalStorage !== null ||
-          covidInfo !== null ||
-          insights !== null
-        ) {
-          window.localStorage.clear();
-        }
+
+        window.localStorage.clear();
         setTimeout((window.location.href = "./thanks.html"), 5000);
       }
     })

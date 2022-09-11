@@ -1,23 +1,24 @@
-//vaccination & covid contact date input
+// Show/Hide conditionally rendered forms
 
 const covidContactDateLabel = document.getElementById("covid-contact-date");
 const vaccinationDate = document.getElementById("vaccination-date");
-function covidContact(answer) {
+
+function showCovidContact(answer) {
   covidContactDateLabel.style.display = answer === "yes" ? "block" : "none";
 }
 
-function vaccinationDateInput(answer) {
+function showVaccinationDateInput(answer) {
   vaccinationDate.style.display = answer === "yes" ? "block" : "none";
 }
 
 // Form Validation & & storing gathed data in local storage
 const nextPageBtn = document.getElementById("nextPage");
-let workPreferenceRadioButtons = document.querySelectorAll('input[name = "location"]');
-let covidContactRadioButtons = document.querySelectorAll('input[name = "covid-contact"]');
-const covidContactDatesInput = document.getElementById("covid-contact-date-input");
+const workPreferenceRadioButtons = document.querySelectorAll('input[name = "location"]');
+const covidContactRadioButtons = document.querySelectorAll('input[name = "covid-contact"]');
+const covidContactDateInput = document.getElementById("covid-contact-date-input");
 
-let vaccinationRadioButtons = document.querySelectorAll('input[name = "covid-vaccine"]');
-let gotVaccineOnThisDay = document.getElementById("vaccination-date-input");
+const vaccinationRadioButtons = document.querySelectorAll('input[name = "covid-vaccine"]');
+const gotVaccineOnThisDay = document.getElementById("vaccination-date-input");
 
 nextPageBtn.addEventListener("click", () => {
   if (validateInputs()) {
@@ -28,11 +29,12 @@ nextPageBtn.addEventListener("click", () => {
         from_home: !!workPreferenceRadioButtons[1].checked,
         hybrid: !!workPreferenceRadioButtons[2].checked,
         had_covid: !!covidContactRadioButtons[0].checked,
-        had_covid_at: covidContactDatesInput.value.trim(),
+        had_covid_at: covidContactDateInput.value.trim(),
         vaccinated: !!vaccinationRadioButtons[0].checked,
         vaccinationDate: gotVaccineOnThisDay.value.trim(),
       })
     );
+
     if (
       !workPreferenceRadioButtons[0].checked &&
       !workPreferenceRadioButtons[1].checked &&
@@ -49,12 +51,13 @@ nextPageBtn.addEventListener("click", () => {
 
 function validateInputs() {
   let formIsValid = true;
+
   if (covidContactRadioButtons[0].checked) {
-    if (!isFilled(covidContactDatesInput.value)) {
+    if (!isFilled(covidContactDateInput.value)) {
       formIsValid = false;
-      setError(covidContactDatesInput, "*Please fill this field");
+      setError(covidContactDateInput, "*Please fill this field");
     } else {
-      setSuccess(covidContactDatesInput);
+      setSuccess(covidContactDateInput);
     }
   }
 
@@ -76,20 +79,19 @@ if (localStorage.getItem("covid") !== null) {
 
   // display Job Preference choice
 
-  COVID_JOB_VACCINATION_DATA.from_office
-    ? (workPreferenceRadioButtons[0].checked = true)
-    : COVID_JOB_VACCINATION_DATA.from_home
-    ? (workPreferenceRadioButtons[1].checked = true)
-    : COVID_JOB_VACCINATION_DATA.hybrid
-    ? (workPreferenceRadioButtons[2].checked = true)
-    : null;
+  if (COVID_JOB_VACCINATION_DATA.from_office) {
+    workPreferenceRadioButtons[0].checked = true;
+  } else if (COVID_JOB_VACCINATION_DATA.from_home) {
+    workPreferenceRadioButtons[1].checked = true;
+  } else {
+    workPreferenceRadioButtons[2].checked = true;
+  }
 
   // Display Covid Contact Choice
-
   if (COVID_JOB_VACCINATION_DATA.had_covid) {
     covidContactRadioButtons[0].checked = true;
     covidContactDateLabel.style.display = "block";
-    covidContactDatesInput.value = COVID_JOB_VACCINATION_DATA.had_covid_at;
+    covidContactDateInput.value = COVID_JOB_VACCINATION_DATA.had_covid_at;
   } else {
     covidContactRadioButtons[1].checked = true;
   }
