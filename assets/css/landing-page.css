@@ -18,9 +18,10 @@ html {
 /*Welcome Rocketeer */
 
 .greetings {
+  display: flex;
   text-align: center;
-  align-items: center;
-  margin: 105px 415px 0 415px;
+  flex-direction: column;
+  justify-content: center;
   font-family: "Rowdies";
   font-style: normal;
   font-weight: 400;
