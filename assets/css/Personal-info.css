@@ -39,6 +39,7 @@ h1 {
 }
 
 .info {
+  margin-left: 10px;
   font-family: "Montserrat";
   font-size: 17px;
   line-height: 200%;
@@ -103,7 +104,10 @@ h1 {
 }
 /* Button */
 .addLanguageBtn {
-  margin: 20px 25px 15px 230px;
+  margin: 20px 15px 15px 230px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 35px;
   width: 200px;
   background-color: #fe3b1f;
@@ -233,11 +237,33 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     width: 200px;
     height: 30px;
   }
+  .right-half {
+    display: none;
+    width: 0%;
+  }
+  .left-half {
+    width: 100%;
+  }
+  .split {
+    width: 100%;
+  }
   .pagination {
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
+  }
+  .addLanguageBtn {
+    margin: 20px 0px 15px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    width: 200px;
+    background-color: #fe3b1f;
+    border: 1px transparent;
+    border-radius: 3px;
+    color: wheat;
   }
   .pagination a {
     margin: 3px;

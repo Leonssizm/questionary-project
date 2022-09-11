@@ -24,14 +24,18 @@ body {
   width: 900px;
 }
 .applications-heading {
+  display: flex;
   color: #ffffff;
   font-family: "Rowdies";
   font-weight: 700;
   letter-spacing: 3px;
+  align-items: stretch;
+  justify-content: center;
 }
 .accordion {
   width: 800px;
-  margin: 5px 200px 0 50px;
+  display: flex;
+  flex-direction: column;
 }
 
 .accordion .contentBox {
